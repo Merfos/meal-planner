@@ -187,16 +187,24 @@ export default function Index() {
             <div className="flex flex-col gap-6">
               <div className="flex flex-col gap-4">
                 {currentDayData.dishes.map((dish) => (
-                  <DishCard key={dish.id} dish={dish} />
+                  <DishCard
+                    key={dish.id}
+                    dish={dish}
+                    isExpanded={expandedDishId === dish.id}
+                    onClick={() => {
+                      // Toggle expanded state - collapse if already expanded, expand if collapsed
+                      setExpandedDishId(expandedDishId === dish.id ? null : dish.id);
+                    }}
+                  />
                 ))}
-                
+
                 {currentDayData.dishes.length === 0 && (
                   <div className="flex items-center justify-center p-12 text-meal-secondary">
                     <span className="font-sf-compact text-lg">Немає страв на цей день</span>
                   </div>
                 )}
               </div>
-              
+
               {currentDayData.totalCalories > 0 && (
                 <TotalCaloriesCard totalCalories={currentDayData.totalCalories} />
               )}
