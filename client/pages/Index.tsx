@@ -55,10 +55,11 @@ const daysData: Record<string, DayData> = {
       },
       {
         id: '5',
-        name: 'Омлет з овочами та салатом',
-        ingredients: 'Яйця 2шт; Хумус 40г; Хліб 2шт; Салат 50г.',
+        name: 'Протеїновий йогурт',
+        ingredients: 'Йогурт Хг.',
         mealType: 'Сніданок',
         time: '10:30',
+        calories: 385,
         isActive: false
       }
     ],
@@ -103,10 +104,11 @@ const daysData: Record<string, DayData> = {
       },
       {
         id: '5',
-        name: 'Омлет з овочами та салатом',
-        ingredients: 'Яйця 2шт; Хумус 40г; Хліб 2шт; Салат 50г.',
+        name: 'Протеїновий йогурт',
+        ingredients: 'Йогурт Хг.',
         mealType: 'Сніданок',
         time: '10:30',
+        calories: 385,
         isActive: false
     }
   ], totalCalories: 0 },
