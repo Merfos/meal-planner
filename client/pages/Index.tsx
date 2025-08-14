@@ -39,7 +39,7 @@ const daysData: Record<string, DayData> = {
       {
         id: '3',
         name: 'Куряче філе на грилі з рисом та броколі',
-        ingredients: 'Курка 200г; Рис 60г; Броколі 100г.',
+        ingredients: 'Курка 200г; Рис 60г; ��роколі 100г.',
         isActive: false
       },
       {
@@ -205,11 +205,7 @@ export default function Index() {
                     key={day}
                     day={day}
                     isActive={activeDay === day}
-                    onClick={() => {
-                      setActiveDay(day);
-                      // Reset expanded dish when switching days
-                      setExpandedDishId(day === 'понеділок' ? '1' : null);
-                    }}
+                    onClick={() => setActiveDay(day)}
                   />
                 ))}
                 </div>
@@ -233,7 +229,7 @@ export default function Index() {
 
                 {currentDayData.dishes.length === 0 && (
                   <div className="flex items-center justify-center p-12 text-meal-secondary">
-                    <span className="font-sf-compact text-lg">Немає страв на цей день</span>
+                    <span className="font-sf-compact text-lg">Н��має страв на цей день</span>
                   </div>
                 )}
               </div>
