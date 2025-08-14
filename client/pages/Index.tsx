@@ -115,7 +115,7 @@ const DishCard = ({
     </div>
 
     {isExpanded && dish.mealType && dish.time && dish.calories && (
-      <div className="flex items-start justify-between gap-4">
+      <div className="flex items-start gap-4">
         <div className="flex flex-col">
           <span className="font-sf-compact text-sm sm:text-base text-meal-secondary uppercase font-semibold">
             {dish.mealType}
@@ -124,7 +124,7 @@ const DishCard = ({
             {dish.time}
           </span>
         </div>
-        <div className="flex flex-col">
+        <div className="flex flex-col ml-auto">
           <span className="font-sf-compact text-sm sm:text-base text-meal-secondary text-right uppercase font-semibold">
             калорії
           </span>
