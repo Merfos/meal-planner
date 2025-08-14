@@ -113,7 +113,7 @@ const daysData: Record<string, DayData> = {
         calories: 385,
         isActive: false
     }
-  ], totalCalories: 0 },
+  ], totalCalories: 10 },
   середа: {
     dishes: [
       {
@@ -161,7 +161,7 @@ const daysData: Record<string, DayData> = {
         calories: 385,
         isActive: false
       }
-  ], totalCalories: 0 },
+  ], totalCalories: 10 },
   четвер: {
     dishes: [
       {
@@ -209,7 +209,7 @@ const daysData: Record<string, DayData> = {
         calories: 385,
         isActive: false
       }
-  ], totalCalories: 0 },
+  ], totalCalories: 10 },
   'п\'ятниця': {
     dishes: [
       {
@@ -257,7 +257,7 @@ const daysData: Record<string, DayData> = {
         calories: 385,
         isActive: false
       }
-  ], totalCalories: 0 },
+  ], totalCalories: 10 },
   субота: {
     dishes: [
       {
@@ -305,7 +305,7 @@ const daysData: Record<string, DayData> = {
         calories: 385,
         isActive: false
       }
-  ], totalCalories: 0 },
+  ], totalCalories: 10 },
   неділя: {
     dishes: [
       {
@@ -353,7 +353,7 @@ const daysData: Record<string, DayData> = {
         calories: 385,
         isActive: false
       }
-  ], totalCalories: 0 }
+  ], totalCalories: 10 }
 };
 
 const DayTab = ({
