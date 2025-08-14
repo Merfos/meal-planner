@@ -166,11 +166,20 @@ const getCurrentDayInUkrainian = (): string => {
 };
 
 export default function Index() {
-  const [activeDay, setActiveDay] = useState('понеділок');
-  const [expandedDishId, setExpandedDishId] = useState<string | null>('1');
+  const [activeDay, setActiveDay] = useState(getCurrentDayInUkrainian());
+  const [expandedDishId, setExpandedDishId] = useState<string | null>(null);
 
   // Add error handling to prevent crashes
   const currentDayData = daysData[activeDay] || { dishes: [], totalCalories: 0 };
+
+  // Set initial expanded dish when component mounts or day changes
+  useEffect(() => {
+    if (currentDayData.dishes.length > 0) {
+      setExpandedDishId(currentDayData.dishes[0].id);
+    } else {
+      setExpandedDishId(null);
+    }
+  }, [activeDay]);
 
   const days = [
     'понеділок',
