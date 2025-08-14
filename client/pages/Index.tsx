@@ -148,6 +148,23 @@ const TotalCaloriesCard = ({ totalCalories }: { totalCalories: number }) => (
   </div>
 );
 
+// Function to get current day of the week in Ukrainian
+const getCurrentDayInUkrainian = (): string => {
+  const dayNames = [
+    'неділя',     // Sunday - 0
+    'понеділок',  // Monday - 1
+    'вівторок',   // Tuesday - 2
+    'середа',     // Wednesday - 3
+    'четвер',     // Thursday - 4
+    'п\'ятниця',  // Friday - 5
+    'субота'      // Saturday - 6
+  ];
+
+  const today = new Date();
+  const dayIndex = today.getDay();
+  return dayNames[dayIndex];
+};
+
 export default function Index() {
   const [activeDay, setActiveDay] = useState('понеділок');
   const [expandedDishId, setExpandedDishId] = useState<string | null>('1');
