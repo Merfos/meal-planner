@@ -16,7 +16,7 @@ interface DayData {
 }
 
 const daysData: Record<string, DayData> = {
-  'понеділок': {
+  понеділок: {
     dishes: [
       {
         id: '1',
@@ -54,12 +54,12 @@ const daysData: Record<string, DayData> = {
     ],
     totalCalories: 1668
   },
-  'вівторок': { dishes: [], totalCalories: 0 },
-  'середа': { dishes: [], totalCalories: 0 },
-  'четвер': { dishes: [], totalCalories: 0 },
-  'п\'ятн��ця': { dishes: [], totalCalories: 0 },
-  'субота': { dishes: [], totalCalories: 0 },
-  'неділя': { dishes: [], totalCalories: 0 }
+  вівторок: { dishes: [], totalCalories: 0 },
+  середа: { dishes: [], totalCalories: 0 },
+  четвер: { dishes: [], totalCalories: 0 },
+  'п\'ятниця': { dishes: [], totalCalories: 0 },
+  субота: { dishes: [], totalCalories: 0 },
+  неділя: { dishes: [], totalCalories: 0 }
 };
 
 const DayTab = ({
@@ -99,7 +99,7 @@ const DishCard = ({ dish }: { dish: Dish }) => (
         {dish.ingredients}
       </p>
     </div>
-
+    
     {dish.isActive && dish.mealType && dish.time && dish.calories && (
       <div className="flex items-start gap-4">
         <div className="flex flex-col flex-1">
@@ -136,11 +136,13 @@ const TotalCaloriesCard = ({ totalCalories }: { totalCalories: number }) => (
 
 export default function Index() {
   const [activeDay, setActiveDay] = useState('понеділок');
+  
+  // Add error handling to prevent crashes
   const currentDayData = daysData[activeDay] || { dishes: [], totalCalories: 0 };
 
   const days = [
     'понеділок',
-    'вівторок',
+    'вівторок', 
     'середа',
     'четвер',
     'п\'ятниця',
@@ -173,14 +175,14 @@ export default function Index() {
                 {currentDayData.dishes.map((dish) => (
                   <DishCard key={dish.id} dish={dish} />
                 ))}
-
+                
                 {currentDayData.dishes.length === 0 && (
                   <div className="flex items-center justify-center p-12 text-meal-secondary">
                     <span className="font-sf-compact text-lg">Немає страв на цей день</span>
                   </div>
                 )}
               </div>
-
+              
               {currentDayData.totalCalories > 0 && (
                 <TotalCaloriesCard totalCalories={currentDayData.totalCalories} />
               )}
