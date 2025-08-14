@@ -114,11 +114,246 @@ const daysData: Record<string, DayData> = {
         isActive: false
     }
   ], totalCalories: 0 },
-  середа: { dishes: [], totalCalories: 0 },
-  четвер: { dishes: [], totalCalories: 0 },
-  'п\'ятниця': { dishes: [], totalCalories: 0 },
-  субота: { dishes: [], totalCalories: 0 },
-  неділя: { dishes: [], totalCalories: 0 }
+  середа: {
+    dishes: [
+      {
+        id: '1',
+        name: 'Вівсянка з молоком, бананом та горішками',
+        ingredients: 'Овес 50г; Молоко 150мл; Банан 50г; Суміш горіхів 10г.',
+        mealType: 'Сніданок',
+        time: '10:30',
+        calories: 385,
+        isActive: true
+      },
+      {
+        id: '2',
+        name: 'Банан і горішки',
+        ingredients: 'Банан 120г; Суміш горіхів 20г.',
+        mealType: 'Сніданок',
+        time: '10:30',
+        calories: 385,
+        isActive: false
+      },
+      {
+        id: '3',
+        name: 'Протеїновий йогурт',
+        ingredients: 'Йогурт Хг.',
+        mealType: 'Сніданок',
+        time: '10:30',
+        calories: 385,
+        isActive: false
+      },
+      {
+        id: '4',
+        name: 'Протеїновий йогурт',
+        ingredients: 'Йогурт Хг.',
+        mealType: 'Сніданок',
+        time: '10:30',
+        calories: 385,
+        isActive: false
+      },
+      {
+        id: '5',
+        name: 'Протеїновий йогурт',
+        ingredients: 'Йогурт Хг.',
+        mealType: 'Сніданок',
+        time: '10:30',
+        calories: 385,
+        isActive: false
+      }
+  ], totalCalories: 0 },
+  четвер: {
+    dishes: [
+      {
+        id: '1',
+        name: 'Вівсянка з молоком, бананом та горішками',
+        ingredients: 'Овес 50г; Молоко 150мл; Банан 50г; Суміш горіхів 10г.',
+        mealType: 'Сніданок',
+        time: '10:30',
+        calories: 385,
+        isActive: true
+      },
+      {
+        id: '2',
+        name: 'Банан і горішки',
+        ingredients: 'Банан 120г; Суміш горіхів 20г.',
+        mealType: 'Сніданок',
+        time: '10:30',
+        calories: 385,
+        isActive: false
+      },
+      {
+        id: '3',
+        name: 'Протеїновий йогурт',
+        ingredients: 'Йогурт Хг.',
+        mealType: 'Сніданок',
+        time: '10:30',
+        calories: 385,
+        isActive: false
+      },
+      {
+        id: '4',
+        name: 'Протеїновий йогурт',
+        ingredients: 'Йогурт Хг.',
+        mealType: 'Сніданок',
+        time: '10:30',
+        calories: 385,
+        isActive: false
+      },
+      {
+        id: '5',
+        name: 'Протеїновий йогурт',
+        ingredients: 'Йогурт Хг.',
+        mealType: 'Сніданок',
+        time: '10:30',
+        calories: 385,
+        isActive: false
+      }
+  ], totalCalories: 0 },
+  'п\'ятниця': {
+    dishes: [
+      {
+        id: '1',
+        name: 'Вівсянка з молоком, бананом та горішками',
+        ingredients: 'Овес 50г; Молоко 150мл; Банан 50г; Суміш горіхів 10г.',
+        mealType: 'Сніданок',
+        time: '10:30',
+        calories: 385,
+        isActive: true
+      },
+      {
+        id: '2',
+        name: 'Банан і горішки',
+        ingredients: 'Банан 120г; Суміш горіхів 20г.',
+        mealType: 'Сніданок',
+        time: '10:30',
+        calories: 385,
+        isActive: false
+      },
+      {
+        id: '3',
+        name: 'Протеїновий йогурт',
+        ingredients: 'Йогурт Хг.',
+        mealType: 'Сніданок',
+        time: '10:30',
+        calories: 385,
+        isActive: false
+      },
+      {
+        id: '4',
+        name: 'Протеїновий йогурт',
+        ingredients: 'Йогурт Хг.',
+        mealType: 'Сніданок',
+        time: '10:30',
+        calories: 385,
+        isActive: false
+      },
+      {
+        id: '5',
+        name: 'Протеїновий йогурт',
+        ingredients: 'Йогурт Хг.',
+        mealType: 'Сніданок',
+        time: '10:30',
+        calories: 385,
+        isActive: false
+      }
+  ], totalCalories: 0 },
+  субота: {
+    dishes: [
+      {
+        id: '1',
+        name: 'Вівсянка з молоком, бананом та горішками',
+        ingredients: 'Овес 50г; Молоко 150мл; Банан 50г; Суміш горіхів 10г.',
+        mealType: 'Сніданок',
+        time: '10:30',
+        calories: 385,
+        isActive: true
+      },
+      {
+        id: '2',
+        name: 'Банан і горішки',
+        ingredients: 'Банан 120г; Суміш горіхів 20г.',
+        mealType: 'Сніданок',
+        time: '10:30',
+        calories: 385,
+        isActive: false
+      },
+      {
+        id: '3',
+        name: 'Протеїновий йогурт',
+        ingredients: 'Йогурт Хг.',
+        mealType: 'Сніданок',
+        time: '10:30',
+        calories: 385,
+        isActive: false
+      },
+      {
+        id: '4',
+        name: 'Протеїновий йогурт',
+        ingredients: 'Йогурт Хг.',
+        mealType: 'Сніданок',
+        time: '10:30',
+        calories: 385,
+        isActive: false
+      },
+      {
+        id: '5',
+        name: 'Протеїновий йогурт',
+        ingredients: 'Йогурт Хг.',
+        mealType: 'Сніданок',
+        time: '10:30',
+        calories: 385,
+        isActive: false
+      }
+  ], totalCalories: 0 },
+  неділя: {
+    dishes: [
+      {
+        id: '1',
+        name: 'Вівсянка з молоком, бананом та горішками',
+        ingredients: 'Овес 50г; Молоко 150мл; Банан 50г; Суміш горіхів 10г.',
+        mealType: 'Сніданок',
+        time: '10:30',
+        calories: 385,
+        isActive: true
+      },
+      {
+        id: '2',
+        name: 'Банан і горішки',
+        ingredients: 'Банан 120г; Суміш горіхів 20г.',
+        mealType: 'Сніданок',
+        time: '10:30',
+        calories: 385,
+        isActive: false
+      },
+      {
+        id: '3',
+        name: 'Протеїновий йогурт',
+        ingredients: 'Йогурт Хг.',
+        mealType: 'Сніданок',
+        time: '10:30',
+        calories: 385,
+        isActive: false
+      },
+      {
+        id: '4',
+        name: 'Протеїновий йогурт',
+        ingredients: 'Йогурт Хг.',
+        mealType: 'Сніданок',
+        time: '10:30',
+        calories: 385,
+        isActive: false
+      },
+      {
+        id: '5',
+        name: 'Протеїновий йогурт',
+        ingredients: 'Йогурт Хг.',
+        mealType: 'Сніданок',
+        time: '10:30',
+        calories: 385,
+        isActive: false
+      }
+  ], totalCalories: 0 }
 };
 
 const DayTab = ({
