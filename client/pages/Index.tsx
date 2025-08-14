@@ -222,6 +222,20 @@ export default function Index() {
     setExpandedDishId(appropriateMealId);
   }, [activeDay, currentDayData.dishes]);
 
+  // Real-time updates - check every minute for meal time changes
+  useEffect(() => {
+    const interval = setInterval(() => {
+      // Only update if we're on the current day to avoid overriding manual selections on other days
+      const currentDay = getCurrentDayInUkrainian();
+      if (activeDay === currentDay) {
+        const appropriateMealId = findCurrentMealByTime(currentDayData.dishes);
+        setExpandedDishId(appropriateMealId);
+      }
+    }, 60000); // Check every minute
+
+    return () => clearInterval(interval);
+  }, [activeDay, currentDayData.dishes]);
+
   const days = [
     'понеділок',
     'вівторок', 
