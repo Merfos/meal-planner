@@ -106,7 +106,7 @@ const daysData: Record<string, DayData> = {
       },
       {
         id: '5',
-        name: 'Запечене куряче стегно з овочами,
+        name: 'Запечене куряче стегно з овочами',
         ingredients: 'Куряче стегно 100г; Овочі 150г.',
         mealType: 'Вечеря',
         time: '20:30',
