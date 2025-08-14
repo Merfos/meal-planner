@@ -154,7 +154,7 @@ const getCurrentDayInUkrainian = (): string => {
     'неділя',     // Sunday - 0
     'понеділок',  // Monday - 1
     'вівторок',   // Tuesday - 2
-    'сере��а',     // Wednesday - 3
+    'середа',     // Wednesday - 3
     'четвер',     // Thursday - 4
     'п\'ятниця',  // Friday - 5
     'субота'      // Saturday - 6
@@ -216,14 +216,11 @@ export default function Index() {
   // Add error handling to prevent crashes
   const currentDayData = daysData[activeDay] || { dishes: [], totalCalories: 0 };
 
-  // Set initial expanded dish when component mounts or day changes
+  // Set initial expanded dish when component mounts or day changes, based on current time
   useEffect(() => {
-    if (currentDayData.dishes.length > 0) {
-      setExpandedDishId(currentDayData.dishes[0].id);
-    } else {
-      setExpandedDishId(null);
-    }
-  }, [activeDay]);
+    const appropriateMealId = findCurrentMealByTime(currentDayData.dishes);
+    setExpandedDishId(appropriateMealId);
+  }, [activeDay, currentDayData.dishes]);
 
   const days = [
     'понеділок',
