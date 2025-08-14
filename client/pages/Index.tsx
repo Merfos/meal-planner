@@ -39,7 +39,7 @@ const daysData: Record<string, DayData> = {
       {
         id: '3',
         name: 'Куряче філе на грилі з рисом та броколі',
-        ingredients: 'Курка 200г; Рис 60г; ��роколі 100г.',
+        ingredients: 'Курка 200г; Рис 60г; Броколі 100г.',
         isActive: false
       },
       {
@@ -154,7 +154,7 @@ const getCurrentDayInUkrainian = (): string => {
     'неділя',     // Sunday - 0
     'понеділок',  // Monday - 1
     'вівторок',   // Tuesday - 2
-    'середа',     // Wednesday - 3
+    'сере��а',     // Wednesday - 3
     'четвер',     // Thursday - 4
     'п\'ятниця',  // Friday - 5
     'субота'      // Saturday - 6
@@ -163,6 +163,50 @@ const getCurrentDayInUkrainian = (): string => {
   const today = new Date();
   const dayIndex = today.getDay();
   return dayNames[dayIndex];
+};
+
+// Function to parse time string (e.g., "10:30") to minutes since midnight
+const parseTimeToMinutes = (timeStr: string): number => {
+  const [hours, minutes] = timeStr.split(':').map(Number);
+  return hours * 60 + minutes;
+};
+
+// Function to get current time in minutes since midnight
+const getCurrentTimeInMinutes = (): number => {
+  const now = new Date();
+  return now.getHours() * 60 + now.getMinutes();
+};
+
+// Function to find the most appropriate dish based on current time
+const findCurrentMealByTime = (dishes: Dish[]): string | null => {
+  const currentTimeMinutes = getCurrentTimeInMinutes();
+
+  // Filter dishes that have time information
+  const timedDishes = dishes.filter(dish => dish.time).map(dish => ({
+    ...dish,
+    timeMinutes: parseTimeToMinutes(dish.time!)
+  }));
+
+  if (timedDishes.length === 0) {
+    // If no dishes have time, return first dish if any exist
+    return dishes.length > 0 ? dishes[0].id : null;
+  }
+
+  // Sort dishes by time
+  timedDishes.sort((a, b) => a.timeMinutes - b.timeMinutes);
+
+  // Find the current or next meal
+  let currentMeal = timedDishes[0]; // Default to first meal
+
+  for (const dish of timedDishes) {
+    if (dish.timeMinutes <= currentTimeMinutes) {
+      currentMeal = dish;
+    } else {
+      break;
+    }
+  }
+
+  return currentMeal.id;
 };
 
 export default function Index() {
@@ -229,7 +273,7 @@ export default function Index() {
 
                 {currentDayData.dishes.length === 0 && (
                   <div className="flex items-center justify-center p-12 text-meal-secondary">
-                    <span className="font-sf-compact text-lg">Н��має страв на цей день</span>
+                    <span className="font-sf-compact text-lg">Немає страв на цей день</span>
                   </div>
                 )}
               </div>
