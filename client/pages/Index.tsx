@@ -136,7 +136,8 @@ const TotalCaloriesCard = ({ totalCalories }: { totalCalories: number }) => (
 
 export default function Index() {
   const [activeDay, setActiveDay] = useState('понеділок');
-  
+  const [expandedDishId, setExpandedDishId] = useState<string | null>('1');
+
   // Add error handling to prevent crashes
   const currentDayData = daysData[activeDay] || { dishes: [], totalCalories: 0 };
 
