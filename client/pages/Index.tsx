@@ -31,6 +31,9 @@ const daysData: Record<string, DayData> = {
         id: '2',
         name: 'Банан і горішки',
         ingredients: 'Банан 120г; Суміш горіхів 20г.',
+        mealType: 'Сніданок',
+        time: '10:30',
+        calories: 385,
         isActive: false
       },
       {
