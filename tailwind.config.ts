@@ -12,8 +12,22 @@ export default {
         "2xl": "1400px",
       },
     },
+    fontFamily: {
+      'sf-compact': ['SF Compact Rounded', '-apple-system', 'BlinkMacSystemFont', 'system-ui', 'Roboto', 'Helvetica', 'Arial', 'sans-serif'],
+      'sf-mono': ['SF Mono', 'Monaco', 'Inconsolata', 'Roboto Mono', 'Consolas', 'Courier New', 'monospace'],
+    },
     extend: {
       colors: {
+        // Design system colors from Figma
+        'meal': {
+          'primary': '#000000',
+          'secondary': 'rgba(60, 60, 67, 0.6)',
+          'accent': '#FF3B30',
+          'background': '#FFFFFF',
+          'card': '#F2F2F7',
+          'border': 'rgba(0, 0, 0, 0.08)',
+        },
+        // Original theme colors for compatibility
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
