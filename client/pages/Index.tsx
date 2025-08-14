@@ -62,13 +62,13 @@ const daysData: Record<string, DayData> = {
   'неділя': { dishes: [], totalCalories: 0 }
 };
 
-const DayTab = ({ 
-  day, 
-  isActive, 
-  onClick 
-}: { 
-  day: string; 
-  isActive: boolean; 
+const DayTab = ({
+  day,
+  isActive,
+  onClick
+}: {
+  day: string;
+  isActive: boolean;
   onClick: () => void;
 }) => (
   <button
@@ -77,11 +77,11 @@ const DayTab = ({
       isActive ? 'text-meal-primary' : 'text-meal-secondary'
     } hover:text-meal-primary`}
   >
-    <span className="font-sf-compact text-xl sm:text-2xl lg:text-3xl font-bold uppercase">
+    <span className="font-sf-compact text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl font-bold uppercase leading-none">
       {day}
     </span>
     {isActive && (
-      <div className="w-4 h-4 bg-meal-accent rounded-full flex-shrink-0" />
+      <div className="w-3 h-3 sm:w-4 sm:h-4 bg-meal-accent rounded-full flex-shrink-0" />
     )}
   </button>
 );
@@ -138,7 +138,7 @@ const TotalCaloriesCard = ({ totalCalories }: { totalCalories: number }) => (
 );
 
 export default function Index() {
-  const [activeDay, setActiveDay] = useState('понеділок');
+  const [activeDay, setActiveDay] = useState('по��еділок');
   const currentDayData = daysData[activeDay];
 
   const days = [
