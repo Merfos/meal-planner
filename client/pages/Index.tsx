@@ -86,12 +86,23 @@ const DayTab = ({
   </button>
 );
 
-const DishCard = ({ dish }: { dish: Dish }) => (
-  <div className="flex flex-col p-4 sm:p-6 rounded-2xl gap-4 sm:gap-16 bg-meal-card">
+const DishCard = ({
+  dish,
+  isExpanded,
+  onClick
+}: {
+  dish: Dish;
+  isExpanded: boolean;
+  onClick: () => void;
+}) => (
+  <button
+    onClick={onClick}
+    className="flex flex-col p-4 sm:p-6 rounded-2xl gap-4 sm:gap-16 bg-meal-card w-full text-left transition-all duration-200 hover:bg-opacity-80"
+  >
     <div className="flex flex-col gap-1">
       <h3 className={`
         font-sf-compact text-base sm:text-lg md:text-xl lg:text-2xl font-bold uppercase leading-tight
-        ${dish.isActive ? 'text-meal-primary' : 'text-meal-secondary'}
+        ${isExpanded ? 'text-meal-primary' : 'text-meal-secondary'}
       `}>
         {dish.name}
       </h3>
@@ -99,8 +110,8 @@ const DishCard = ({ dish }: { dish: Dish }) => (
         {dish.ingredients}
       </p>
     </div>
-    
-    {dish.isActive && dish.mealType && dish.time && dish.calories && (
+
+    {isExpanded && dish.mealType && dish.time && dish.calories && (
       <div className="flex items-start gap-4">
         <div className="flex flex-col flex-1">
           <span className="font-sf-compact text-sm sm:text-base text-meal-secondary uppercase font-semibold">
@@ -120,7 +131,7 @@ const DishCard = ({ dish }: { dish: Dish }) => (
         </div>
       </div>
     )}
-  </div>
+  </button>
 );
 
 const TotalCaloriesCard = ({ totalCalories }: { totalCalories: number }) => (
