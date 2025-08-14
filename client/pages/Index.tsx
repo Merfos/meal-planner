@@ -16,7 +16,7 @@ interface DayData {
 }
 
 const daysData: Record<string, DayData> = {
-  'поне��ілок': {
+  'понеділок': {
     dishes: [
       {
         id: '1',
@@ -57,7 +57,7 @@ const daysData: Record<string, DayData> = {
   'вівторок': { dishes: [], totalCalories: 0 },
   'середа': { dishes: [], totalCalories: 0 },
   'четвер': { dishes: [], totalCalories: 0 },
-  'п\'ятниця': { dishes: [], totalCalories: 0 },
+  'п\'ятн��ця': { dishes: [], totalCalories: 0 },
   'субота': { dishes: [], totalCalories: 0 },
   'неділя': { dishes: [], totalCalories: 0 }
 };
@@ -150,12 +150,12 @@ export default function Index() {
 
   return (
     <div className="min-h-screen bg-meal-background">
-      <div className="flex justify-center p-6 sm:p-8">
-        <div className="w-full max-w-4xl">
-          <div className="flex flex-col gap-12">
+      <div className="flex justify-center px-4 sm:px-6 lg:px-8 py-6 sm:py-8">
+        <div className="w-full max-w-5xl">
+          <div className="flex flex-col gap-8 sm:gap-12">
             {/* Day Tabs */}
             <div className="flex flex-col gap-2.5">
-              <div className="flex flex-wrap items-center gap-4 sm:gap-6 lg:gap-8">
+              <div className="flex flex-wrap items-center gap-3 sm:gap-4 md:gap-6 lg:gap-8">
                 {days.map((day) => (
                   <DayTab
                     key={day}
@@ -173,8 +173,14 @@ export default function Index() {
                 {currentDayData.dishes.map((dish) => (
                   <DishCard key={dish.id} dish={dish} />
                 ))}
+
+                {currentDayData.dishes.length === 0 && (
+                  <div className="flex items-center justify-center p-12 text-meal-secondary">
+                    <span className="font-sf-compact text-lg">Немає страв на цей день</span>
+                  </div>
+                )}
               </div>
-              
+
               {currentDayData.totalCalories > 0 && (
                 <TotalCaloriesCard totalCalories={currentDayData.totalCalories} />
               )}
