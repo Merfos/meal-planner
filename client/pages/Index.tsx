@@ -157,15 +157,17 @@ export default function Index() {
           <div className="flex flex-col gap-8 sm:gap-12">
             {/* Day Tabs */}
             <div className="flex flex-col gap-2.5">
-              <div className="flex flex-wrap items-center gap-3 sm:gap-4 md:gap-6 lg:gap-8">
-                {days.map((day) => (
-                  <DayTab
-                    key={day}
-                    day={day}
-                    isActive={activeDay === day}
-                    onClick={() => setActiveDay(day)}
-                  />
-                ))}
+              <div className="flex items-center gap-3 sm:gap-4 md:gap-6 lg:gap-8 overflow-x-auto scrollbar-hide pb-2">
+                <div className="flex items-center gap-3 sm:gap-4 md:gap-6 lg:gap-8 min-w-max">
+                  {days.map((day) => (
+                    <DayTab
+                      key={day}
+                      day={day}
+                      isActive={activeDay === day}
+                      onClick={() => setActiveDay(day)}
+                    />
+                  ))}
+                </div>
               </div>
             </div>
 
