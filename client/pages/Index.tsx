@@ -178,7 +178,7 @@ const daysData: Record<string, DayData> = {
         name: 'Банан і горішки',
         ingredients: 'Банан 120г; Суміш горіхів 20г.',
         mealType: 'Сніданок',
-        time: '10:30',
+        time: '13:00',
         calories: 385,
         isActive: false
       },
@@ -187,7 +187,7 @@ const daysData: Record<string, DayData> = {
         name: 'Протеїновий йогурт',
         ingredients: 'Йогурт Хг.',
         mealType: 'Сніданок',
-        time: '10:30',
+        time: '15:30',
         calories: 385,
         isActive: false
       },
@@ -196,7 +196,7 @@ const daysData: Record<string, DayData> = {
         name: 'Протеїновий йогурт',
         ingredients: 'Йогурт Хг.',
         mealType: 'Сніданок',
-        time: '10:30',
+        time: '18:00',
         calories: 385,
         isActive: false
       },
@@ -205,7 +205,7 @@ const daysData: Record<string, DayData> = {
         name: 'Протеїновий йогурт',
         ingredients: 'Йогурт Хг.',
         mealType: 'Сніданок',
-        time: '10:30',
+        time: '20:30',
         calories: 385,
         isActive: false
       }
