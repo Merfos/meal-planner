@@ -172,13 +172,17 @@ export default function Index() {
               <div className="flex items-center gap-3 sm:gap-4 md:gap-6 lg:gap-8 overflow-x-auto scrollbar-hide pb-2">
                 <div className="flex items-center gap-3 sm:gap-4 md:gap-6 lg:gap-8 min-w-max">
                   {days.map((day) => (
-                    <DayTab
-                      key={day}
-                      day={day}
-                      isActive={activeDay === day}
-                      onClick={() => setActiveDay(day)}
-                    />
-                  ))}
+                  <DayTab
+                    key={day}
+                    day={day}
+                    isActive={activeDay === day}
+                    onClick={() => {
+                      setActiveDay(day);
+                      // Reset expanded dish when switching days
+                      setExpandedDishId(day === 'понеділок' ? '1' : null);
+                    }}
+                  />
+                ))}
                 </div>
               </div>
             </div>
