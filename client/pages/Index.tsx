@@ -40,6 +40,8 @@ const daysData: Record<string, DayData> = {
         id: '3',
         name: 'Куряче філе на грилі з рисом та броколі',
         ingredients: 'Курка 200г; Рис 60г; Броколі 100г.',
+        time: '10:30',
+        calories: 385,
         isActive: false
       },
       {
@@ -86,6 +88,8 @@ const daysData: Record<string, DayData> = {
         id: '3',
         name: 'Куряче філе на грилі з рисом та броколі',
         ingredients: 'Курка 200г; Рис 60г; Броколі 100г.',
+        time: '10:30',
+        calories: 385,
         isActive: false
       },
       {
