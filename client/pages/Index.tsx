@@ -16,7 +16,7 @@ interface DayData {
 }
 
 const daysData: Record<string, DayData> = {
-  'понеділок': {
+  'поне��ілок': {
     dishes: [
       {
         id: '1',
@@ -87,26 +87,23 @@ const DayTab = ({
 );
 
 const DishCard = ({ dish }: { dish: Dish }) => (
-  <div className={`
-    flex flex-col p-6 rounded-2xl gap-4 sm:gap-16
-    ${dish.isActive ? 'bg-meal-card' : 'bg-meal-card'}
-  `}>
+  <div className="flex flex-col p-4 sm:p-6 rounded-2xl gap-4 sm:gap-16 bg-meal-card">
     <div className="flex flex-col gap-1">
       <h3 className={`
-        font-sf-compact text-lg sm:text-xl lg:text-2xl font-bold uppercase
+        font-sf-compact text-base sm:text-lg md:text-xl lg:text-2xl font-bold uppercase leading-tight
         ${dish.isActive ? 'text-meal-primary' : 'text-meal-secondary'}
       `}>
         {dish.name}
       </h3>
-      <p className="font-sf-compact text-sm sm:text-base text-meal-secondary">
+      <p className="font-sf-compact text-sm sm:text-base text-meal-secondary leading-normal">
         {dish.ingredients}
       </p>
     </div>
-    
+
     {dish.isActive && dish.mealType && dish.time && dish.calories && (
       <div className="flex items-start gap-4">
         <div className="flex flex-col flex-1">
-          <span className="font-sf-compact text-sm sm:text-base text-meal-secondary uppercase">
+          <span className="font-sf-compact text-sm sm:text-base text-meal-secondary uppercase font-semibold">
             {dish.mealType}
           </span>
           <span className="font-sf-mono text-sm sm:text-base font-bold text-meal-accent uppercase">
@@ -114,7 +111,7 @@ const DishCard = ({ dish }: { dish: Dish }) => (
           </span>
         </div>
         <div className="flex flex-col flex-1">
-          <span className="font-sf-compact text-sm sm:text-base text-meal-secondary text-right uppercase">
+          <span className="font-sf-compact text-sm sm:text-base text-meal-secondary text-right uppercase font-semibold">
             калорії
           </span>
           <span className="font-sf-mono text-sm sm:text-base font-bold text-meal-accent text-right uppercase">
@@ -138,7 +135,7 @@ const TotalCaloriesCard = ({ totalCalories }: { totalCalories: number }) => (
 );
 
 export default function Index() {
-  const [activeDay, setActiveDay] = useState('по��еділок');
+  const [activeDay, setActiveDay] = useState('понеділок');
   const currentDayData = daysData[activeDay];
 
   const days = [
