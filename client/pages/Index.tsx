@@ -406,20 +406,20 @@ const DishCard = ({
     </div>
 
     {isExpanded && dish.mealType && dish.time && dish.calories && (
-      <div className="flex items-start gap-4">
-        <div className="flex flex-col">
-          <span className="font-nunito text-sm sm:text-base text-meal-secondary uppercase font-semibold">
+      <div className="flex items-start gap-4 w-full">
+        <div className="flex flex-col w-full">
+          <span className="font-nunito text-sm sm:text-base text-meal-secondary uppercase font-extrabold">
             {dish.mealType}
           </span>
-          <span className="font-nunito text-sm sm:text-base font-bold text-meal-accent uppercase">
+          <span className="font-nunito text-sm sm:text-base font-extrabold text-meal-accent uppercase">
             {dish.time}
           </span>
         </div>
-        <div className="flex flex-col ml-auto">
-          <span className="font-nunito text-sm sm:text-base text-meal-secondary text-right uppercase font-semibold">
+        <div className="flex flex-col ml-auto w-full">
+          <span className="font-nunito text-sm sm:text-base text-meal-secondary text-right uppercase font-extrabold">
             калорії
           </span>
-          <span className="font-nunito text-sm sm:text-base font-bold text-meal-accent text-right uppercase">
+          <span className="font-nunito text-sm sm:text-base font-extrabold text-meal-accent text-right uppercase">
             {dish.calories}
           </span>
         </div>
