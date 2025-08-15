@@ -20,7 +20,7 @@ const daysData: Record<string, DayData> = {
     dishes: [
       {
         id: "1",
-        name: "Вівсянка з молоком, бананом та горішками",
+        name: "Вівсянк�� з молоком, бананом та горішками",
         ingredients: "Овес 50г; Молоко 150мл; Банан 50г; Суміш горіхів 10г.",
         mealType: "Сніданок",
         time: "10:30",
@@ -140,7 +140,7 @@ const daysData: Record<string, DayData> = {
         id: "3",
         name: "Картопля зі свининою на грилі та салатом зі шпинату",
         ingredients: "Картопля 200г; Свинина 150г; Шпинат 30г.",
-        mealType: "Обід",
+        mealType: "О��ід",
         time: "15:30",
         calories: 507,
         isActive: false,
@@ -407,15 +407,17 @@ const DishCard = ({
   const getCardStyles = () => {
     const baseClasses = "flex flex-col p-4 sm:p-6 rounded-2xl gap-4 sm:gap-16 w-full text-left transition-all duration-200 hover:opacity-90";
 
+    console.log(`Meal: ${dish.name}, State: ${mealState}, Time: ${dish.time}`);
+
     switch (mealState) {
       case 'past':
         return `${baseClasses} bg-white border border-black border-opacity-[0.08]`;
       case 'current':
-        return `${baseClasses} bg-meal-card`;
+        return `${baseClasses}` + ' bg-[#F2F2F7]';
       case 'next':
         return `${baseClasses} bg-white border border-black border-opacity-[0.08]`;
       default:
-        return `${baseClasses} bg-meal-card`;
+        return `${baseClasses}` + ' bg-[#F2F2F7]';
     }
   };
 
