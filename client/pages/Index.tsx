@@ -22,7 +22,7 @@ const daysData: Record<string, DayData> = {
         id: "1",
         name: "Вівсянка з молоком, бананом та горішками",
         ingredients: "Овес 50г; Молоко 150мл; Банан 50г; Суміш горіхів 10г.",
-        mealType: "Сніданок",
+        mealType: "��ніданок",
         time: "10:30",
         calories: 385,
         isActive: true,
@@ -138,7 +138,7 @@ const daysData: Record<string, DayData> = {
       },
       {
         id: "3",
-        name: "Картопля зі сви��иною на грилі та салатом зі шпинату",
+        name: "Картопля зі свининою на грилі та салатом зі шпинату",
         ingredients: "Картопля 200г; Свинина 150г; Шпинат 30г.",
         mealType: "Обід",
         time: "15:30",
@@ -257,7 +257,7 @@ const daysData: Record<string, DayData> = {
       {
         id: "5",
         name: "Овочеве рагу з квасолею та яйцем",
-        ingredients: "Овочі 250г; Квасо��я 100г; Варене яйце 1шт.",
+        ingredients: "Овочі 250г; Квасоля 100г; Варене яйце 1шт.",
         mealType: "Вечеря",
         time: "20:30",
         calories: 305,
@@ -413,11 +413,11 @@ const DishCard = ({
       case 'past':
         return `${baseClasses} bg-white border border-black border-opacity-[0.08]`;
       case 'current':
-        return `${baseClasses}` + ' bg-[#F2F2F7]';
+        return `${baseClasses}`;
       case 'next':
         return `${baseClasses} bg-white border border-black border-opacity-[0.08]`;
       default:
-        return `${baseClasses}` + ' bg-[#F2F2F7]';
+        return `${baseClasses}`;
     }
   };
 
