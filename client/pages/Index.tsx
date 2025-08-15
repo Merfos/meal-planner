@@ -188,7 +188,7 @@ const daysData: Record<string, DayData> = {
       },
       {
         id: "3",
-        name: "Б��лгур з курячим стегном на грилі та салотом",
+        name: "Булгур з курячим стегном на грилі та салотом",
         ingredients: "Булгур 60г; Куряче стегно 150г; Салат 100г.",
         mealType: "Обід",
         time: "15:30",
@@ -307,7 +307,7 @@ const daysData: Record<string, DayData> = {
       {
         id: "5",
         name: "Курка з кабачками та помідорами",
-        ingredients: "Куряче філе 200г; Кабачок 150г; Помі��ор 50г.",
+        ingredients: "Куряче філе 200г; Кабачок 150г; Помідор 50г.",
         mealType: "Вечеря",
         time: "20:30",
         calories: 260,
@@ -348,7 +348,7 @@ const daysData: Record<string, DayData> = {
       {
         id: "4",
         name: "Суміш горіхів з яблуком",
-        ingredients: "Горіхи 20г; Яблуко 150г.",
+        ingredients: "Горіх�� 20г; Яблуко 150г.",
         mealType: "Перекус",
         time: "18:00",
         calories: 200,
@@ -545,20 +545,36 @@ const getCurrentTimeInMinutes = (): number => {
 // Function to determine meal state based on current time
 type MealState = 'past' | 'current' | 'next';
 
-const getMealState = (dish: Dish, currentTimeMinutes: number): MealState => {
+const getMealState = (dish: Dish, currentTimeMinutes: number, allDishes: Dish[]): MealState => {
   if (!dish.time) return 'next';
 
   const dishTimeMinutes = parseTimeToMinutes(dish.time);
-  const timeDifference = Math.abs(dishTimeMinutes - currentTimeMinutes);
 
-  console.log(`Current time: ${Math.floor(currentTimeMinutes/60)}:${String(currentTimeMinutes%60).padStart(2, '0')}, Dish: ${dish.name} at ${dish.time}, Difference: ${timeDifference} minutes`);
+  // Get all dishes with time, sorted by time
+  const timedDishes = allDishes
+    .filter(d => d.time)
+    .map(d => ({ ...d, timeMinutes: parseTimeToMinutes(d.time!) }))
+    .sort((a, b) => a.timeMinutes - b.timeMinutes);
 
-  // Consider a meal "current" if we're within 30 minutes of its time
-  const isCurrentTime = timeDifference <= 30;
+  // Find the current dish index
+  const currentDishIndex = timedDishes.findIndex(d => d.id === dish.id);
+  if (currentDishIndex === -1) return 'next';
 
-  if (isCurrentTime) return 'current';
-  if (dishTimeMinutes < currentTimeMinutes) return 'past';
-  return 'next';
+  // Get next meal time (or end of day if this is the last meal)
+  const nextMealTime = currentDishIndex < timedDishes.length - 1
+    ? timedDishes[currentDishIndex + 1].timeMinutes
+    : 24 * 60; // End of day
+
+  console.log(`Current time: ${Math.floor(currentTimeMinutes/60)}:${String(currentTimeMinutes%60).padStart(2, '0')}, Dish: ${dish.name} at ${dish.time}, Next meal at: ${Math.floor(nextMealTime/60)}:${String(nextMealTime%60).padStart(2, '0')}`);
+
+  // Determine state based on time ranges
+  if (currentTimeMinutes < dishTimeMinutes) {
+    return 'next';
+  } else if (currentTimeMinutes >= dishTimeMinutes && currentTimeMinutes < nextMealTime) {
+    return 'current';
+  } else {
+    return 'past';
+  }
 };
 
 // Function to find the most appropriate dish based on current time
