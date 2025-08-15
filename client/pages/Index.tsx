@@ -49,7 +49,7 @@ const daysData: Record<string, DayData> = {
         id: "4",
         name: "Протеїновий йогурт",
         ingredients: "Йогурт 170г.",
-        mealType: "Перекус",
+        mealType: "П��рекус",
         time: "18:00",
         calories: 140,
         isActive: false,
@@ -129,7 +129,7 @@ const daysData: Record<string, DayData> = {
       },
       {
         id: "2",
-        name: "Суміш горіхів та ябл��ко",
+        name: "Суміш горіхів та яблуко",
         ingredients: "Горіхи 20г; Яблуко 150г.",
         mealType: "Сніданок",
         time: "13:00",
@@ -171,7 +171,7 @@ const daysData: Record<string, DayData> = {
       {
         id: "1",
         name: "Два тости з авокадо",
-        ingredients: "Цільн��зерновий хліб 2шт; Авокадо 50г; Яйце варене 1шт.",
+        ingredients: "Цільнозерновий хліб 2шт; Авокадо 50г; Яйце варене 1шт.",
         mealType: "Сніданок",
         time: "10:30",
         calories: 480,
@@ -256,7 +256,7 @@ const daysData: Record<string, DayData> = {
       },
       {
         id: "5",
-        name: "Овочеве рагу з квасолею та яйцем",
+        name: "��вочеве рагу з квасолею та яйцем",
         ingredients: "Овочі 250г; Квасоля 100г; Варене яйце 1шт.",
         mealType: "Вечеря",
         time: "20:30",
@@ -297,7 +297,7 @@ const daysData: Record<string, DayData> = {
       },
       {
         id: "4",
-        name: "Протеїновий йогурт",
+        name: "Про��еїновий йогурт",
         ingredients: "Йогурт 170г.",
         mealType: "Перекус",
         time: "18:00",
@@ -339,7 +339,7 @@ const daysData: Record<string, DayData> = {
       {
         id: "3",
         name: "Лаваш з куркою, сиром та овочами",
-        ingredients: "Лаваш 1шт; Курка 100г; Сир 30г; Овочі 150г.",
+        ingredients: "Лаваш 1шт; Курка 100г; ��ир 30г; Овочі 150г.",
         mealType: "Обід",
         time: "15:30",
         calories: 445,
@@ -640,6 +640,22 @@ export default function Index() {
     const appropriateMealId = findCurrentMealByTime(currentDayData.dishes);
     setExpandedDishId(appropriateMealId);
   }, [activeDay, currentDayData.dishes]);
+
+  // Scroll selected day into view when activeDay changes
+  useEffect(() => {
+    if (dayTabsRef.current) {
+      const activeButton = dayTabsRef.current.querySelector(
+        `[data-day="${activeDay}"]`,
+      ) as HTMLElement;
+      if (activeButton) {
+        activeButton.scrollIntoView({
+          behavior: "smooth",
+          block: "nearest",
+          inline: "center",
+        });
+      }
+    }
+  }, [activeDay]);
 
   // Real-time updates - check every minute for meal time changes
   useEffect(() => {
