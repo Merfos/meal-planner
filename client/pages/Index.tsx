@@ -181,7 +181,7 @@ const daysData: Record<string, DayData> = {
         id: "2",
         name: "Протеїновий смузі",
         ingredients: "Протеїн 30г; Банан 100г; Молоко 150мл.",
-        mealType: "Перекус",
+        mealType: "Пер��кус",
         time: "13:00",
         calories: 284,
         isActive: false,
@@ -565,7 +565,7 @@ export default function Index() {
             {/* Day Tabs */}
             <div className="flex flex-col gap-2.5">
               <div className="flex items-center gap-3 sm:gap-4 md:gap-6 lg:gap-8 overflow-x-auto scrollbar-hide justify-start">
-                <div className="flex items-center gap-3 sm:gap-4 md:gap-6 lg:gap-8 min-w-max">
+                <div className="flex items-center gap-3 sm:gap-4 md:gap-6 lg:gap-10 min-w-max">
                   {days.map((day) => (
                     <DayTab
                       key={day}
