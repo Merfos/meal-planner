@@ -70,7 +70,7 @@ const daysData: Record<string, DayData> = {
     dishes: [
       {
         id: "1",
-        name: "Омлет з помідорами та хлібом з цільного зерна і фетою",
+        name: "Омлет �� помідорами та хлібом з цільного зерна і фетою",
         ingredients: "Яйця 2шт; Помідори 100г; Хліб 40г; Фета 40г.",
         mealType: "Сніданок",
         time: "10:30",
@@ -256,7 +256,7 @@ const daysData: Record<string, DayData> = {
       },
       {
         id: "5",
-        name: "Овочеве рагу з квасолею т�� яйцем",
+        name: "Овочеве рагу з квасолею та яйцем",
         ingredients: "Овочі 250г; Квасоля 100г; Варене яйце 1шт.",
         mealType: "Вечеря",
         time: "20:30",
@@ -271,7 +271,7 @@ const daysData: Record<string, DayData> = {
       {
         id: "1",
         name: "Тости з арахісовою пастою і яблуком",
-        ingredients: "Хліб 2шт; Арахісова паста 20г; Яблуко 100г.",
+        ingredients: "Хліб 2шт; Арахісова паста 20г; Яб��уко 100г.",
         mealType: "Сніданок",
         time: "10:30",
         calories: 614,
@@ -606,6 +606,9 @@ export default function Index() {
   // Real-time updates - check every minute for meal time changes
   useEffect(() => {
     const interval = setInterval(() => {
+      const newCurrentTime = getCurrentTimeInMinutes();
+      setCurrentTimeMinutes(newCurrentTime);
+
       // Only update if we're on the current day to avoid overriding manual selections on other days
       const currentDay = getCurrentDayInUkrainian();
       if (activeDay === currentDay) {
