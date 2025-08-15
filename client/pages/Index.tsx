@@ -430,10 +430,10 @@ const DishCard = ({
 
 const TotalCaloriesCard = ({ totalCalories }: { totalCalories: number }) => (
   <div className="flex items-center gap-4 p-6 rounded-2xl border border-meal-border bg-meal-background">
-    <span className="flex-1 font-nunito text-sm sm:text-base font-bold text-meal-primary uppercase">
+    <span className="flex-1 font-nunito text-sm sm:text-base font-extrabold text-meal-primary uppercase">
       усього калорій на день:
     </span>
-    <span className="font-nunito text-sm sm:text-base font-bold text-meal-accent text-right uppercase">
+    <span className="font-nunito text-sm sm:text-base font-extrabold text-meal-accent text-right uppercase">
       {totalCalories} ккал
     </span>
   </div>
