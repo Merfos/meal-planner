@@ -691,12 +691,12 @@ export default function Index() {
         <div className="w-full max-w-5xl">
           <div className="flex flex-col gap-6 sm:gap-8">
             {/* Day Tabs */}
-            <div className="sticky top-0 z-10 bg-white pb-4 mb-2">
+            <div className="sticky top-0 z-10 pb-4 mb-2">
               <div className="flex items-center gap-3 sm:gap-4 md:gap-6 lg:gap-8 overflow-x-auto scrollbar-hide justify-start pt-6 sm:pt-8">
                 <div
                   ref={dayTabsRef}
-                  className="flex items-center gap-3 sm:gap-4 md:gap-6 lg:gap-10 min-w-max">
-            </div>
+                  className="flex items-center gap-3 sm:gap-4 md:gap-6 lg:gap-10 min-w-max"
+                >
                   {days.map((day) => (
                     <DayTab
                       key={day}
