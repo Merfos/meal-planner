@@ -256,7 +256,7 @@ const daysData: Record<string, DayData> = {
       },
       {
         id: "5",
-        name: "Овочеве рагу з квасолею та яйцем",
+        name: "Овочеве рагу з квасолею т�� яйцем",
         ingredients: "Овочі 250г; Квасоля 100г; Варене яйце 1шт.",
         mealType: "Вечеря",
         time: "20:30",
@@ -589,6 +589,7 @@ const findCurrentMealByTime = (dishes: Dish[]): string | null => {
 export default function Index() {
   const [activeDay, setActiveDay] = useState(getCurrentDayInUkrainian());
   const [expandedDishId, setExpandedDishId] = useState<string | null>(null);
+  const [currentTimeMinutes, setCurrentTimeMinutes] = useState(getCurrentTimeInMinutes());
 
   // Add error handling to prevent crashes
   const currentDayData = daysData[activeDay] || {
