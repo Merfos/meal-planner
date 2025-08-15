@@ -57,7 +57,7 @@ const daysData: Record<string, DayData> = {
       {
         id: '5',
         name: 'Омлет з овочами та салатом',
-        ingredients: 'Яйця 2шт; Хумус 40г; Хліб 2шт; Салат 50г.',
+        ingredients: 'Яйця 2ш��; Хумус 40г; Хліб 2шт; Салат 50г.',
         mealType: 'Вечеря',
         time: '20:30',
         calories: 470,
@@ -98,7 +98,7 @@ const daysData: Record<string, DayData> = {
       {
         id: '4',
         name: 'Морква з хумусом',
-        ingredients: 'Морква 100г; Хумус 40г.',
+        ingredients: 'Морква 100г; Хум��с 40г.',
         mealType: 'Перекус',
         time: '10:30',
         calories: 135,
@@ -120,7 +120,7 @@ const daysData: Record<string, DayData> = {
         id: '1',
         name: 'Сирники з ягодами та джемом',
         ingredients: 'Сирники 150г; Ягодин 100г.',
-        mealType: 'Снідан��к',
+        mealType: 'Сніданок',
         time: '10:30',
         calories: 365,
         isActive: true
@@ -252,7 +252,7 @@ const daysData: Record<string, DayData> = {
         id: '5',
         name: 'Протеїновий йогурт',
         ingredients: 'Йогурт Хг.',
-        mealType: 'С��іданок',
+        mealType: 'Сніданок',
         time: '10:30',
         calories: 385,
         isActive: false
@@ -544,7 +544,7 @@ export default function Index() {
           <div className="flex flex-col gap-6 sm:gap-8">
             {/* Day Tabs */}
             <div className="flex flex-col gap-2.5">
-              <div className="flex items-center gap-3 sm:gap-4 md:gap-6 lg:gap-8 overflow-x-auto scrollbar-hide pb-2">
+              <div className="flex items-center gap-3 sm:gap-4 md:gap-6 lg:gap-8 overflow-x-auto scrollbar-hide justify-start">
                 <div className="flex items-center gap-3 sm:gap-4 md:gap-6 lg:gap-8 min-w-max">
                   {days.map((day) => (
                   <DayTab
