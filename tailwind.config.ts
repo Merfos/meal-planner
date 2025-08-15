@@ -13,19 +13,36 @@ export default {
       },
     },
     fontFamily: {
-      'nunito': ['Nunito', '-apple-system', 'BlinkMacSystemFont', 'system-ui', 'Roboto', 'Helvetica', 'Arial', 'sans-serif'],
-      'nunito-mono': ['Nunito', 'Monaco', 'Inconsolata', 'Roboto Mono', 'Consolas', 'Courier New', 'monospace'],
+      nunito: [
+        "Nunito",
+        "-apple-system",
+        "BlinkMacSystemFont",
+        "system-ui",
+        "Roboto",
+        "Helvetica",
+        "Arial",
+        "sans-serif",
+      ],
+      "nunito-mono": [
+        "Nunito",
+        "Monaco",
+        "Inconsolata",
+        "Roboto Mono",
+        "Consolas",
+        "Courier New",
+        "monospace",
+      ],
     },
     extend: {
       colors: {
         // Design system colors from Figma
-        'meal': {
-          'primary': '#000000',
-          'secondary': 'rgba(60, 60, 67, 0.6)',
-          'accent': '#FF3B30',
-          'background': '#FFFFFF',
-          'card': '#F2F2F7',
-          'border': 'rgba(0, 0, 0, 0.08)',
+        meal: {
+          primary: "#000000",
+          secondary: "rgba(60, 60, 67, 0.6)",
+          accent: "#FF3B30",
+          background: "#FFFFFF",
+          card: "#F2F2F7",
+          border: "rgba(0, 0, 0, 0.08)",
         },
         // Original theme colors for compatibility
         border: "hsl(var(--border))",
