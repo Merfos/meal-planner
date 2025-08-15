@@ -695,7 +695,7 @@ export default function Index() {
               <div className="flex items-center gap-3 sm:gap-4 md:gap-6 lg:gap-8 overflow-x-auto scrollbar-hide justify-start pt-6 sm:pt-8">
                 <div
                   ref={dayTabsRef}
-                  className="flex items-center gap-3 sm:gap-3 md:gap-3 lg:gap-3 min-w-max"
+                  className="flex items-center gap-3 sm:gap-4 md:gap-6 lg:gap-10 min-w-max"
                 >
                   {days.map((day) => (
                     <DayTab
