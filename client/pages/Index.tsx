@@ -220,7 +220,7 @@ const daysData: Record<string, DayData> = {
     dishes: [
       {
         id: "1",
-        name: "Вівсянка з молоком, бананом та горішками",
+        name: "Вівсянка з моло��ом, бананом та горішками",
         ingredients: "Овес 50г; Молоко 150мл; Банан 50г; Суміш горіхів 20г.",
         mealType: "Сніданок",
         time: "10:30",
@@ -691,7 +691,7 @@ export default function Index() {
         <div className="w-full max-w-5xl">
           <div className="flex flex-col gap-6 sm:gap-8">
             {/* Day Tabs */}
-            <div className="sticky top-0 z-10 bg-white pb-4 mb-2">
+            <div className="sticky top-0 z-10 bg-white pb-4 mb-2 sm:border-b sm:border-meal-border">
               <div className="flex items-center gap-3 sm:gap-4 md:gap-6 lg:gap-8 overflow-x-auto scrollbar-hide justify-start pt-6 sm:pt-8">
                 <div
                   ref={dayTabsRef}
