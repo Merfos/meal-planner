@@ -89,7 +89,7 @@ const daysData: Record<string, DayData> = {
       {
         id: "3",
         name: "Гречка з котлетами з індички та овочами на пару",
-        ingredients: "Гречка 60г; Котлет�� з індички180г; Овочі 200г.",
+        ingredients: "Гречка 60г; Котлети з індички180г; Овочі 200г.",
         mealType: "Обід",
         time: "15:30",
         calories: 522,
@@ -157,7 +157,7 @@ const daysData: Record<string, DayData> = {
       {
         id: "5",
         name: "Куряче філе на грилі з моцарелою та овочами",
-        ingredients: "Курка 250г; Овочі 150г; Моцарела 50г.",
+        ingredients: "Курка 250г; Овочі 150г; ��оцарела 50г.",
         mealType: "Вечеря",
         time: "20:30",
         calories: 475,
@@ -652,7 +652,7 @@ export default function Index() {
         activeButton.scrollIntoView({
           behavior: "smooth",
           block: "nearest",
-          inline: "center",
+          inline: "start",
         });
       }
     }
@@ -681,7 +681,7 @@ export default function Index() {
     "середа",
     "четвер",
     "п'ятниця",
-    "��убота",
+    "субота",
     "неділя",
   ];
 
