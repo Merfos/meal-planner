@@ -395,7 +395,7 @@ const DishCard = ({
   >
     <div className="flex flex-col gap-1">
       <h3 className={`
-        font-nunito text-base sm:text-lg md:text-xl lg:text-2xl font-extrabold uppercase leading-tight
+        font-nunito text-xl font-extrabold uppercase leading-tight
         ${isExpanded ? 'text-meal-primary' : 'text-meal-secondary'}
       `}>
         {dish.name}
