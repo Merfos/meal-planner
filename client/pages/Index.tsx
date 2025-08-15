@@ -157,7 +157,7 @@ const daysData: Record<string, DayData> = {
       {
         id: "5",
         name: "Куряче філе на грилі з моцарелою та овочами",
-        ingredients: "Курка 250г; Овочі 150г; ��оцарела 50г.",
+        ingredients: "Курка 250г; Овочі 150г; Моцарела 50г.",
         mealType: "Вечеря",
         time: "20:30",
         calories: 475,
@@ -208,7 +208,7 @@ const daysData: Record<string, DayData> = {
         id: "5",
         name: "Котлети з індички з печеними овочами",
         ingredients: "Котлети з індички 180г; овочі 150г.",
-        mealType: "Вечер��",
+        mealType: "Вечеря",
         time: "20:30",
         calories: 342,
         isActive: false,
