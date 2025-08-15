@@ -397,51 +397,103 @@ const DishCard = ({
   dish,
   isExpanded,
   onClick,
+  mealState,
 }: {
   dish: Dish;
   isExpanded: boolean;
   onClick: () => void;
-}) => (
-  <button
-    onClick={onClick}
-    className="flex flex-col p-4 sm:p-6 rounded-2xl gap-4 sm:gap-16 bg-meal-card w-full text-left transition-all duration-200 hover:bg-opacity-80"
-  >
-    <div className="flex flex-col gap-1">
-      <h3
-        className={`
-        font-nunito text-xl font-extrabold uppercase leading-tight
-        ${isExpanded ? "text-meal-primary" : "text-meal-secondary"}
-      `}
-      >
-        {dish.name}
-      </h3>
-      <p className="font-nunito text-base text-meal-secondary leading-normal">
-        {dish.ingredients}
-      </p>
-    </div>
+  mealState: MealState;
+}) => {
+  const getCardStyles = () => {
+    const baseClasses = "flex flex-col p-4 sm:p-6 rounded-2xl gap-4 sm:gap-16 w-full text-left transition-all duration-200 hover:opacity-90";
 
-    {isExpanded && dish.mealType && dish.time && dish.calories && (
-      <div className="flex items-start gap-4 w-full">
-        <div className="flex flex-col w-full">
-          <span className="font-nunito text-base text-meal-secondary uppercase font-extrabold">
-            {dish.mealType}
-          </span>
-          <span className="font-nunito text-base font-extrabold text-meal-accent uppercase">
-            {dish.time}
-          </span>
-        </div>
-        <div className="flex flex-col ml-auto w-full">
-          <span className="font-nunito text-base text-meal-secondary text-right uppercase font-extrabold">
-            калорії
-          </span>
-          <span className="font-nunito text-base font-extrabold text-meal-accent text-right uppercase">
-            {dish.calories}
-          </span>
-        </div>
+    switch (mealState) {
+      case 'past':
+        return `${baseClasses} bg-white border border-black border-opacity-[0.08]`;
+      case 'current':
+        return `${baseClasses} bg-meal-card`;
+      case 'next':
+        return `${baseClasses} bg-white border border-black border-opacity-[0.08]`;
+      default:
+        return `${baseClasses} bg-meal-card`;
+    }
+  };
+
+  const getNameStyles = () => {
+    const baseClasses = "font-nunito text-xl font-extrabold uppercase leading-tight";
+
+    if (isExpanded) {
+      return `${baseClasses} text-black`;
+    }
+
+    switch (mealState) {
+      case 'past':
+        return `${baseClasses} text-black text-opacity-30`;
+      case 'current':
+        return `${baseClasses} text-black`;
+      case 'next':
+        return `${baseClasses} text-black text-opacity-60`;
+      default:
+        return `${baseClasses} text-meal-secondary`;
+    }
+  };
+
+  const getIngredientsStyles = () => {
+    const baseClasses = "font-nunito text-base leading-normal";
+
+    if (isExpanded) {
+      return `${baseClasses} text-black text-opacity-60`;
+    }
+
+    switch (mealState) {
+      case 'past':
+        return `${baseClasses} text-black text-opacity-30`;
+      case 'current':
+        return `${baseClasses} text-black text-opacity-60`;
+      case 'next':
+        return `${baseClasses} text-black text-opacity-30`;
+      default:
+        return `${baseClasses} text-meal-secondary`;
+    }
+  };
+
+  return (
+    <button
+      onClick={onClick}
+      className={getCardStyles()}
+    >
+      <div className="flex flex-col gap-1">
+        <h3 className={getNameStyles()}>
+          {dish.name}
+        </h3>
+        <p className={getIngredientsStyles()}>
+          {dish.ingredients}
+        </p>
       </div>
-    )}
-  </button>
-);
+
+      {isExpanded && dish.mealType && dish.time && dish.calories && (
+        <div className="flex items-start gap-4 w-full">
+          <div className="flex flex-col w-full">
+            <span className="font-nunito text-base text-meal-secondary uppercase font-extrabold">
+              {dish.mealType}
+            </span>
+            <span className="font-nunito text-base font-extrabold text-meal-accent uppercase">
+              {dish.time}
+            </span>
+          </div>
+          <div className="flex flex-col ml-auto w-full">
+            <span className="font-nunito text-base text-meal-secondary text-right uppercase font-extrabold">
+              калорії
+            </span>
+            <span className="font-nunito text-base font-extrabold text-meal-accent text-right uppercase">
+              {dish.calories}
+            </span>
+          </div>
+        </div>
+      )}
+    </button>
+  );
+};
 
 const TotalCaloriesCard = ({ totalCalories }: { totalCalories: number }) => (
   <div className="flex items-center gap-4 p-6 rounded-2xl border border-meal-border bg-meal-background sm:justify-start sm:items-end">
