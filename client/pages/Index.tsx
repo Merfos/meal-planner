@@ -188,7 +188,7 @@ const daysData: Record<string, DayData> = {
       },
       {
         id: "3",
-        name: "Булгур з курячим стегном на г��илі та салотом",
+        name: "Б��лгур з курячим стегном на грилі та салотом",
         ingredients: "Булгур 60г; Куряче стегно 150г; Салат 100г.",
         mealType: "Обід",
         time: "15:30",
@@ -229,7 +229,7 @@ const daysData: Record<string, DayData> = {
       },
       {
         id: "2",
-        name: "Сухофрукт�� і горішки",
+        name: "Сухофрукти і горішки",
         ingredients: "Сухофрукти 30г; Суміш горіхів 15г.",
         mealType: "Перекус",
         time: "13:00",
@@ -270,7 +270,7 @@ const daysData: Record<string, DayData> = {
     dishes: [
       {
         id: "1",
-        name: "Тости з арахісовою пасто�� і яблуком",
+        name: "Тости з арахісовою пастою і яблуком",
         ingredients: "Хліб 2шт; Арахісова паста 20г; Яблуко 100г.",
         mealType: "Сніданок",
         time: "10:30",
@@ -307,7 +307,7 @@ const daysData: Record<string, DayData> = {
       {
         id: "5",
         name: "Курка з кабачками та помідорами",
-        ingredients: "Куряче філе 200г; Кабачок 150г; Помідор 50г.",
+        ingredients: "Куряче філе 200г; Кабачок 150г; Помі��ор 50г.",
         mealType: "Вечеря",
         time: "20:30",
         calories: 260,
@@ -552,9 +552,6 @@ const getMealState = (dish: Dish, currentTimeMinutes: number): MealState => {
   const timeDifference = Math.abs(dishTimeMinutes - currentTimeMinutes);
 
   console.log(`Current time: ${Math.floor(currentTimeMinutes/60)}:${String(currentTimeMinutes%60).padStart(2, '0')}, Dish: ${dish.name} at ${dish.time}, Difference: ${timeDifference} minutes`);
-
-  // Temporarily force the first dish to be current for testing
-  if (dish.id === "4") return 'current';
 
   // Consider a meal "current" if we're within 30 minutes of its time
   const isCurrentTime = timeDifference <= 30;
