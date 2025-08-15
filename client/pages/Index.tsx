@@ -49,7 +49,7 @@ const daysData: Record<string, DayData> = {
         id: "4",
         name: "Протеїновий йогурт",
         ingredients: "Йогурт 170г.",
-        mealType: "П��рекус",
+        mealType: "Перекус",
         time: "18:00",
         calories: 140,
         isActive: false,
@@ -70,7 +70,7 @@ const daysData: Record<string, DayData> = {
     dishes: [
       {
         id: "1",
-        name: "Омлет з помідорами та хлібом з цільного зерна і фетою",
+        name: "Омлет з помідорами та хлібом з цільного зерна �� фетою",
         ingredients: "Яйця 2шт; Помідори 100г; Хліб 40г; Фета 40г.",
         mealType: "Сніданок",
         time: "10:30",
@@ -256,7 +256,7 @@ const daysData: Record<string, DayData> = {
       },
       {
         id: "5",
-        name: "��вочеве рагу з квасолею та яйцем",
+        name: "Овочеве рагу з квасолею та яйцем",
         ingredients: "Овочі 250г; Квасоля 100г; Варене яйце 1шт.",
         mealType: "Вечеря",
         time: "20:30",
@@ -297,7 +297,7 @@ const daysData: Record<string, DayData> = {
       },
       {
         id: "4",
-        name: "Про��еїновий йогурт",
+        name: "Протеїновий йогурт",
         ingredients: "Йогурт 170г.",
         mealType: "Перекус",
         time: "18:00",
@@ -339,7 +339,7 @@ const daysData: Record<string, DayData> = {
       {
         id: "3",
         name: "Лаваш з куркою, сиром та овочами",
-        ingredients: "Лаваш 1шт; Курка 100г; ��ир 30г; Овочі 150г.",
+        ingredients: "Лаваш 1шт; Курка 100г; Сир 30г; Овочі 150г.",
         mealType: "Обід",
         time: "15:30",
         calories: 445,
@@ -379,6 +379,7 @@ const DayTab = ({
   onClick: () => void;
 }) => (
   <button
+    data-day={day}
     onClick={onClick}
     className={`flex items-center gap-2 transition-colors duration-200 ${
       isActive ? "text-meal-primary" : "text-meal-secondary"
