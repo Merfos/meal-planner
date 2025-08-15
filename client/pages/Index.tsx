@@ -20,7 +20,7 @@ const daysData: Record<string, DayData> = {
     dishes: [
       {
         id: '1',
-        name: 'Вівсянка з м��локом, бананом та горішками',
+        name: 'Вівсянка з молоком, бананом та горішками',
         ingredients: 'Овес 50г; Молоко 150мл; Банан 50г; Суміш горіхів 10г.',
         mealType: 'Сніданок',
         time: '10:30',
@@ -145,7 +145,7 @@ const daysData: Record<string, DayData> = {
       },
       {
         id: '4',
-        name: 'Протеїновий йог��рт',
+        name: 'Протеїновий йогурт',
         ingredients: 'Йогурт 170г.',
         mealType: 'Перекус',
         time: '18:00',
@@ -408,18 +408,18 @@ const DishCard = ({
     {isExpanded && dish.mealType && dish.time && dish.calories && (
       <div className="flex items-start gap-4 w-full">
         <div className="flex flex-col w-full">
-          <span className="font-nunito text-sm sm:text-base text-meal-secondary uppercase font-extrabold">
+          <span className="font-nunito text-base text-meal-secondary uppercase font-extrabold">
             {dish.mealType}
           </span>
-          <span className="font-nunito text-sm sm:text-base font-extrabold text-meal-accent uppercase">
+          <span className="font-nunito text-base font-extrabold text-meal-accent uppercase">
             {dish.time}
           </span>
         </div>
         <div className="flex flex-col ml-auto w-full">
-          <span className="font-nunito text-sm sm:text-base text-meal-secondary text-right uppercase font-extrabold">
+          <span className="font-nunito text-base text-meal-secondary text-right uppercase font-extrabold">
             калорії
           </span>
-          <span className="font-nunito text-sm sm:text-base font-extrabold text-meal-accent text-right uppercase">
+          <span className="font-nunito text-base font-extrabold text-meal-accent text-right uppercase">
             {dish.calories}
           </span>
         </div>
