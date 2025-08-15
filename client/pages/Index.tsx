@@ -411,7 +411,7 @@ const DishCard = ({
       case 'past':
         return `${baseClasses} bg-white border border-black border-opacity-[0.08]`;
       case 'current':
-        return `${baseClasses} bg-[#F2F2F7]`;
+        return `${baseClasses} bg-meal-card`;
       case 'next':
         return `${baseClasses} bg-white border border-black border-opacity-[0.08]`;
       default:
