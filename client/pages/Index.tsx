@@ -20,7 +20,7 @@ const daysData: Record<string, DayData> = {
     dishes: [
       {
         id: "1",
-        name: "Вівс��нка з молоком, бананом та горішками",
+        name: "Вівсянка з молоком, бананом та горішками",
         ingredients: "Овес 50г; Молоко 150мл; Банан 50г; Суміш горіхів 10г.",
         mealType: "Сніданок",
         time: "10:30",
@@ -140,7 +140,7 @@ const daysData: Record<string, DayData> = {
         id: "3",
         name: "Картопля зі свининою на грилі та салатом зі шпинату",
         ingredients: "Картопля 200г; Свинина 150г; Шпинат 30г.",
-        mealType: "��бід",
+        mealType: "Обід",
         time: "15:30",
         calories: 507,
         isActive: false,
