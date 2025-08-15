@@ -88,7 +88,7 @@ const daysData: Record<string, DayData> = {
       },
       {
         id: '3',
-        name: 'Гречка з котлетами з індички та овочами на пару',
+        name: 'Гречка з котлетами з індички та овочами на пар��',
         ingredients: 'Гречка 60г; Котлети з індички180г; Овочі 200г.',
         mealType: 'Обід',
         time: '15:30',
@@ -310,7 +310,7 @@ const daysData: Record<string, DayData> = {
     dishes: [
       {
         id: '1',
-        name: 'Вівсянка з молоком, бананом та горішками',
+        name: 'Вівсянка з молоко��, бананом та горішками',
         ingredients: 'Овес 50г; Молоко 150мл; Банан 50г; Суміш горіхів 10г.',
         mealType: 'Сніданок',
         time: '10:30',
@@ -430,10 +430,10 @@ const DishCard = ({
 
 const TotalCaloriesCard = ({ totalCalories }: { totalCalories: number }) => (
   <div className="flex items-center gap-4 p-6 rounded-2xl border border-meal-border bg-meal-background sm:justify-start sm:items-end">
-    <span className="flex-1 font-nunito text-sm sm:text-base font-extrabold text-meal-primary uppercase">
+    <span className="flex-1 font-nunito text-base font-extrabold text-meal-primary uppercase">
       усього калорій на день:
     </span>
-    <span className="font-nunito text-sm sm:text-base font-extrabold text-meal-accent text-right uppercase">
+    <span className="font-nunito text-base font-extrabold text-meal-accent text-right uppercase">
       {totalCalories} ккал
     </span>
   </div>
