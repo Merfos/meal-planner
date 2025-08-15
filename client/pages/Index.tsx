@@ -129,7 +129,7 @@ const daysData: Record<string, DayData> = {
       },
       {
         id: "2",
-        name: "Суміш горіхів та яблуко",
+        name: "Суміш горіхів та ябл��ко",
         ingredients: "Горіхи 20г; Яблуко 150г.",
         mealType: "Сніданок",
         time: "13:00",
@@ -171,7 +171,7 @@ const daysData: Record<string, DayData> = {
       {
         id: "1",
         name: "Два тости з авокадо",
-        ingredients: "Цільнозерновий хліб 2шт; Авокадо 50г; Яйце варене 1шт.",
+        ingredients: "Цільн��зерновий хліб 2шт; Авокадо 50г; Яйце варене 1шт.",
         mealType: "Сніданок",
         time: "10:30",
         calories: 480,
@@ -627,6 +627,7 @@ export default function Index() {
   const [currentTimeMinutes, setCurrentTimeMinutes] = useState(
     getCurrentTimeInMinutes(),
   );
+  const dayTabsRef = useRef<HTMLDivElement>(null);
 
   // Add error handling to prevent crashes
   const currentDayData = daysData[activeDay] || {
