@@ -348,7 +348,7 @@ const daysData: Record<string, DayData> = {
       {
         id: "4",
         name: "Суміш горіхів з яблуком",
-        ingredients: "Горіх�� 20г; Яблуко 150г.",
+        ingredients: "Горіхи 20г; Яблуко 150г.",
         mealType: "Перекус",
         time: "18:00",
         calories: 200,
@@ -680,7 +680,7 @@ export default function Index() {
             <div className="flex flex-col gap-6">
               <div className="flex flex-col gap-4">
                 {currentDayData.dishes.map((dish) => {
-                  const mealState = getMealState(dish, currentTimeMinutes);
+                  const mealState = getMealState(dish, currentTimeMinutes, currentDayData.dishes);
                   return (
                     <DishCard
                       key={dish.id}
