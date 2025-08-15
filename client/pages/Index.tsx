@@ -120,7 +120,7 @@ const daysData: Record<string, DayData> = {
         id: '1',
         name: 'Сирники з ягодами та джемом',
         ingredients: 'Сирники 150г; Ягодин 100г.',
-        mealType: 'Сніданок',
+        mealType: 'Снідан��к',
         time: '10:30',
         calories: 365,
         isActive: true
@@ -252,7 +252,7 @@ const daysData: Record<string, DayData> = {
         id: '5',
         name: 'Протеїновий йогурт',
         ingredients: 'Йогурт Хг.',
-        mealType: 'Сніданок',
+        mealType: 'С��іданок',
         time: '10:30',
         calories: 385,
         isActive: false
@@ -541,7 +541,7 @@ export default function Index() {
     <div className="min-h-screen bg-meal-background">
       <div className="flex justify-center px-4 sm:px-6 lg:px-8 py-6 sm:py-8">
         <div className="w-full max-w-5xl">
-          <div className="flex flex-col gap-8 sm:gap-12">
+          <div className="flex flex-col gap-6 sm:gap-8">
             {/* Day Tabs */}
             <div className="flex flex-col gap-2.5">
               <div className="flex items-center gap-3 sm:gap-4 md:gap-6 lg:gap-8 overflow-x-auto scrollbar-hide pb-2">
