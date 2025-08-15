@@ -89,7 +89,7 @@ const daysData: Record<string, DayData> = {
       {
         id: '3',
         name: 'Гречка з котлетами з індички та овочами на пару',
-        ingredients: 'Гречка 60г; Котлети з індички180г; Овочі 200г.',
+        ingredients: '��речка 60г; Котлети з індички180г; Овочі 200г.',
         mealType: 'Обід',
         time: '15:30',
         calories: 522,
@@ -216,7 +216,7 @@ const daysData: Record<string, DayData> = {
         id: '1',
         name: 'Вівсянка з молоком, бананом та горішками',
         ingredients: 'Овес 50г; Молоко 150мл; Банан 50г; Суміш горіхів 10г.',
-        mealType: 'Сніданок',
+        mealType: 'Снід��нок',
         time: '10:30',
         calories: 385,
         isActive: true
@@ -310,7 +310,7 @@ const daysData: Record<string, DayData> = {
     dishes: [
       {
         id: '1',
-        name: 'Вівсянка з молоком, бананом та горішками',
+        name: 'Вівсянка з молоком, бананом та го��ішками',
         ingredients: 'Овес 50г; Молоко 150мл; Банан 50г; Суміш горіхів 10г.',
         mealType: 'Сніданок',
         time: '10:30',
@@ -575,7 +575,7 @@ export default function Index() {
 
                 {currentDayData.dishes.length === 0 && (
                   <div className="flex items-center justify-center p-12 text-meal-secondary">
-                    <span className="font-sf-compact text-lg">Немає страв на цей день</span>
+                    <span className="font-nunito text-lg">Немає страв на цей день</span>
                   </div>
                 )}
               </div>
