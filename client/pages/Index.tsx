@@ -57,7 +57,7 @@ const daysData: Record<string, DayData> = {
       {
         id: '5',
         name: 'Омлет з овочами та салатом',
-        ingredients: 'Яйця 2ш��; Хумус 40г; Хліб 2шт; Салат 50г.',
+        ingredients: 'Яйця 2шт; Хумус 40г; Хліб 2шт; Салат 50г.',
         mealType: 'Вечеря',
         time: '20:30',
         calories: 470,
@@ -98,7 +98,7 @@ const daysData: Record<string, DayData> = {
       {
         id: '4',
         name: 'Морква з хумусом',
-        ingredients: 'Морква 100г; Хум��с 40г.',
+        ingredients: 'Морква 100г; Хумус 40г.',
         mealType: 'Перекус',
         time: '10:30',
         calories: 135,
@@ -137,7 +137,7 @@ const daysData: Record<string, DayData> = {
       {
         id: '3',
         name: 'Картопля зі свининою на грилі та салатом зі шпинату',
-        ingredients: 'Картопля 200г; Свинина 150г; Шпинат 30г.',
+        ingredients: 'Картопля 200г; Свинин�� 150г; Шпинат 30г.',
         mealType: 'Обід',
         time: '15:30',
         calories: 507,
@@ -271,7 +271,7 @@ const daysData: Record<string, DayData> = {
       },
       {
         id: '2',
-        name: 'Банан і горішки',
+        name: 'Бана�� і горішки',
         ingredients: 'Банан 120г; Суміш горіхів 20г.',
         mealType: 'Сніданок',
         time: '10:30',
@@ -429,7 +429,7 @@ const DishCard = ({
 );
 
 const TotalCaloriesCard = ({ totalCalories }: { totalCalories: number }) => (
-  <div className="flex items-center gap-4 p-6 rounded-2xl border border-meal-border bg-meal-background">
+  <div className="flex items-center gap-4 p-6 rounded-2xl border border-meal-border bg-meal-background sm:justify-start sm:items-end">
     <span className="flex-1 font-nunito text-sm sm:text-base font-extrabold text-meal-primary uppercase">
       усього калорій на день:
     </span>
