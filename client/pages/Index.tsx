@@ -137,7 +137,7 @@ const daysData: Record<string, DayData> = {
       {
         id: '3',
         name: 'Картопля зі свининою на грилі та салатом зі шпинату',
-        ingredients: 'Картопля 200г; Свинин�� 150г; Шпинат 30г.',
+        ingredients: 'Картопля 200г; Свинина 150г; Шпинат 30г.',
         mealType: 'Обід',
         time: '15:30',
         calories: 507,
@@ -271,7 +271,7 @@ const daysData: Record<string, DayData> = {
       },
       {
         id: '2',
-        name: 'Бана�� і горішки',
+        name: 'Банан і горішки',
         ingredients: 'Банан 120г; Суміш горіхів 20г.',
         mealType: 'Сніданок',
         time: '10:30',
@@ -371,7 +371,7 @@ const DayTab = ({
       isActive ? 'text-meal-primary' : 'text-meal-secondary'
     } hover:text-meal-primary`}
   >
-    <span className="font-nunito text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl font-black uppercase leading-none">
+    <span className="font-nunito text-2xl font-black uppercase leading-none">
       {day}
     </span>
     {isActive && (
