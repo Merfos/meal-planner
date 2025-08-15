@@ -13,8 +13,8 @@ export default {
       },
     },
     fontFamily: {
-      'sf-compact': ['SF Compact Rounded', '-apple-system', 'BlinkMacSystemFont', 'system-ui', 'Roboto', 'Helvetica', 'Arial', 'sans-serif'],
-      'sf-mono': ['SF Mono', 'Monaco', 'Inconsolata', 'Roboto Mono', 'Consolas', 'Courier New', 'monospace'],
+      'nunito': ['Nunito', '-apple-system', 'BlinkMacSystemFont', 'system-ui', 'Roboto', 'Helvetica', 'Arial', 'sans-serif'],
+      'nunito-mono': ['Nunito', 'Monaco', 'Inconsolata', 'Roboto Mono', 'Consolas', 'Courier New', 'monospace'],
     },
     extend: {
       colors: {
