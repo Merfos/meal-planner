@@ -154,7 +154,7 @@ const daysData: Record<string, DayData> = {
       },
       {
         id: '5',
-        name: 'Куряче філе на грилі з моцарелою та о��очами',
+        name: 'Куряче філе на грилі з моцарелою та овочами',
         ingredients: 'Курка 250г; Овочі 150г; Моцарела 50г.',
         mealType: 'Вечеря',
         time: '20:30',
@@ -242,7 +242,7 @@ const daysData: Record<string, DayData> = {
       {
         id: '4',
         name: 'Протеїновий йогурт',
-        ingredients: 'Йогу��т Хг.',
+        ingredients: 'Йогурт Хг.',
         mealType: 'Сніданок',
         time: '10:30',
         calories: 385,
@@ -395,7 +395,7 @@ const DishCard = ({
   >
     <div className="flex flex-col gap-1">
       <h3 className={`
-        font-nunito text-base sm:text-lg md:text-xl lg:text-2xl font-bold uppercase leading-tight
+        font-nunito text-base sm:text-lg md:text-xl lg:text-2xl font-extrabold uppercase leading-tight
         ${isExpanded ? 'text-meal-primary' : 'text-meal-secondary'}
       `}>
         {dish.name}
