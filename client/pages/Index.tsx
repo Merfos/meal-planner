@@ -20,7 +20,7 @@ const daysData: Record<string, DayData> = {
     dishes: [
       {
         id: '1',
-        name: 'Вівсянка з молоком, бананом та горішками',
+        name: 'Вівсянка з м��локом, бананом та горішками',
         ingredients: 'Овес 50г; Молоко 150мл; Банан 50г; Суміш горіхів 10г.',
         mealType: 'Сніданок',
         time: '10:30',
@@ -145,7 +145,7 @@ const daysData: Record<string, DayData> = {
       },
       {
         id: '4',
-        name: 'Протеїновий йогурт',
+        name: 'Протеїновий йог��рт',
         ingredients: 'Йогурт 170г.',
         mealType: 'Перекус',
         time: '18:00',
@@ -400,7 +400,7 @@ const DishCard = ({
       `}>
         {dish.name}
       </h3>
-      <p className="font-nunito text-sm sm:text-base text-meal-secondary leading-normal">
+      <p className="font-nunito text-base text-meal-secondary leading-normal">
         {dish.ingredients}
       </p>
     </div>
