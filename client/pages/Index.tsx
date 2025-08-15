@@ -20,7 +20,7 @@ const daysData: Record<string, DayData> = {
     dishes: [
       {
         id: "1",
-        name: "Вівсянка з молоком, бананом та горішками",
+        name: "Вівс��нка з молоком, бананом та горішками",
         ingredients: "Овес 50г; Молоко 150мл; Банан 50г; Суміш горіхів 10г.",
         mealType: "Сніданок",
         time: "10:30",
@@ -81,7 +81,7 @@ const daysData: Record<string, DayData> = {
         id: "2",
         name: "Протеїновий шейк",
         ingredients: "Протеїн 30г; Молоко 250мл.",
-        mealType: "Переку��",
+        mealType: "Перекус",
         time: "13:00",
         calories: 245,
         isActive: false,
@@ -140,7 +140,7 @@ const daysData: Record<string, DayData> = {
         id: "3",
         name: "Картопля зі свининою на грилі та салатом зі шпинату",
         ingredients: "Картопля 200г; Свинина 150г; Шпинат 30г.",
-        mealType: "Обід",
+        mealType: "��бід",
         time: "15:30",
         calories: 507,
         isActive: false,
@@ -206,7 +206,7 @@ const daysData: Record<string, DayData> = {
       },
       {
         id: "5",
-        name: "Котлети з індички з печен��ми овочами",
+        name: "Котлети з індички з печеними овочами",
         ingredients: "Котлети з індички 180г; овочі 150г.",
         mealType: "Вечеря",
         time: "20:30",
@@ -687,7 +687,7 @@ export default function Index() {
 
   return (
     <div className="min-h-screen bg-meal-background">
-      <div className="flex justify-center px-4 sm:px-6 lg:px-8 py-6 sm:py-8">
+      <div className="flex justify-center px-4 sm:px-6 lg:px-8 pb-6 sm:pb-8">
         <div className="w-full max-w-5xl">
           <div className="flex flex-col gap-6 sm:gap-8">
             {/* Day Tabs */}
