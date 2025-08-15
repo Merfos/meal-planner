@@ -70,7 +70,7 @@ const daysData: Record<string, DayData> = {
     dishes: [
       {
         id: "1",
-        name: "Омлет �� помідорами та хлібом з цільного зерна і фетою",
+        name: "��млет з помідорами та хлібом з цільного зерна і фетою",
         ingredients: "Яйця 2шт; Помідори 100г; Хліб 40г; Фета 40г.",
         mealType: "Сніданок",
         time: "10:30",
@@ -271,7 +271,7 @@ const daysData: Record<string, DayData> = {
       {
         id: "1",
         name: "Тости з арахісовою пастою і яблуком",
-        ingredients: "Хліб 2шт; Арахісова паста 20г; Яб��уко 100г.",
+        ingredients: "Хліб 2шт; Арахісова паста 20г; Яблуко 100г.",
         mealType: "Сніданок",
         time: "10:30",
         calories: 614,
@@ -356,7 +356,7 @@ const daysData: Record<string, DayData> = {
       },
       {
         id: "5",
-        name: "Зпечений баклажан з фаршем, сиром та моцарелою",
+        name: "Зпечений баклажан з фаршем, сир��м та моцарелою",
         ingredients:
           "Баклажан 200г; Фарш 100г; Овочі 100г; Сир 30г; Моцарела 40г.",
         mealType: "Вечеря",
@@ -654,19 +654,23 @@ export default function Index() {
             {/* Dishes Container */}
             <div className="flex flex-col gap-6">
               <div className="flex flex-col gap-4">
-                {currentDayData.dishes.map((dish) => (
-                  <DishCard
-                    key={dish.id}
-                    dish={dish}
-                    isExpanded={expandedDishId === dish.id}
-                    onClick={() => {
-                      // Toggle expanded state - collapse if already expanded, expand if collapsed
-                      setExpandedDishId(
-                        expandedDishId === dish.id ? null : dish.id,
-                      );
-                    }}
-                  />
-                ))}
+                {currentDayData.dishes.map((dish) => {
+                  const mealState = getMealState(dish, currentTimeMinutes);
+                  return (
+                    <DishCard
+                      key={dish.id}
+                      dish={dish}
+                      isExpanded={expandedDishId === dish.id}
+                      mealState={mealState}
+                      onClick={() => {
+                        // Toggle expanded state - collapse if already expanded, expand if collapsed
+                        setExpandedDishId(
+                          expandedDishId === dish.id ? null : dish.id,
+                        );
+                      }}
+                    />
+                  );
+                })}
 
                 {currentDayData.dishes.length === 0 && (
                   <div className="flex items-center justify-center p-12 text-meal-secondary">
