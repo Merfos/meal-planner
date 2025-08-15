@@ -207,7 +207,7 @@ const daysData: Record<string, DayData> = {
       {
         id: "5",
         name: "Котлети з індички з печеними овочами",
-        ingredients: "Котле��и з індички 180г; овочі 150г.",
+        ingredients: "Котлети з індички 180г; овочі 150г.",
         mealType: "Вечеря",
         time: "20:30",
         calories: 342,
@@ -220,7 +220,7 @@ const daysData: Record<string, DayData> = {
     dishes: [
       {
         id: "1",
-        name: "Вівсянка з моло��ом, бананом та горішками",
+        name: "Вівсянка з молоком, бананом та горішками",
         ingredients: "Овес 50г; Молоко 150мл; Банан 50г; Суміш горіхів 20г.",
         mealType: "Сніданок",
         time: "10:30",
