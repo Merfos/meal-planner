@@ -89,7 +89,7 @@ const daysData: Record<string, DayData> = {
       {
         id: '3',
         name: 'Гречка з котлетами з індички та овочами на пару',
-        ingredients: '��речка 60г; Котлети з індички180г; Овочі 200г.',
+        ingredients: 'Гречка 60г; Котлети з індички180г; Овочі 200г.',
         mealType: 'Обід',
         time: '15:30',
         calories: 522,
@@ -154,7 +154,7 @@ const daysData: Record<string, DayData> = {
       },
       {
         id: '5',
-        name: 'Куряче філе на грилі з моцарелою та овочами',
+        name: 'Куряче філе на грилі з моцарелою та о��очами',
         ingredients: 'Курка 250г; Овочі 150г; Моцарела 50г.',
         mealType: 'Вечеря',
         time: '20:30',
@@ -216,7 +216,7 @@ const daysData: Record<string, DayData> = {
         id: '1',
         name: 'Вівсянка з молоком, бананом та горішками',
         ingredients: 'Овес 50г; Молоко 150мл; Банан 50г; Суміш горіхів 10г.',
-        mealType: 'Снід��нок',
+        mealType: 'Сніданок',
         time: '10:30',
         calories: 385,
         isActive: true
@@ -242,7 +242,7 @@ const daysData: Record<string, DayData> = {
       {
         id: '4',
         name: 'Протеїновий йогурт',
-        ingredients: 'Йогурт Хг.',
+        ingredients: 'Йогу��т Хг.',
         mealType: 'Сніданок',
         time: '10:30',
         calories: 385,
@@ -310,7 +310,7 @@ const daysData: Record<string, DayData> = {
     dishes: [
       {
         id: '1',
-        name: 'Вівсянка з молоком, бананом та го��ішками',
+        name: 'Вівсянка з молоком, бананом та горішками',
         ingredients: 'Овес 50г; Молоко 150мл; Банан 50г; Суміш горіхів 10г.',
         mealType: 'Сніданок',
         time: '10:30',
@@ -371,7 +371,7 @@ const DayTab = ({
       isActive ? 'text-meal-primary' : 'text-meal-secondary'
     } hover:text-meal-primary`}
   >
-    <span className="font-nunito text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl font-bold uppercase leading-none">
+    <span className="font-nunito text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl font-black uppercase leading-none">
       {day}
     </span>
     {isActive && (
