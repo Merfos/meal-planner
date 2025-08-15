@@ -405,16 +405,17 @@ const DishCard = ({
   mealState: MealState;
 }) => {
   const getCardStyles = () => {
-    const baseClasses = "flex flex-col p-4 sm:p-6 rounded-2xl gap-4 sm:gap-16 w-full text-left transition-all duration-200 hover:opacity-90";
+    const baseClasses =
+      "flex flex-col p-4 sm:p-6 rounded-2xl gap-4 sm:gap-16 w-full text-left transition-all duration-200 hover:opacity-90";
 
     console.log(`Meal: ${dish.name}, State: ${mealState}, Time: ${dish.time}`);
 
     switch (mealState) {
-      case 'past':
+      case "past":
         return `${baseClasses} bg-white border border-black border-opacity-[0.08]`;
-      case 'current':
+      case "current":
         return `${baseClasses}`;
-      case 'next':
+      case "next":
         return `${baseClasses} bg-white border border-black border-opacity-[0.08]`;
       default:
         return `${baseClasses}`;
@@ -422,17 +423,18 @@ const DishCard = ({
   };
 
   const getNameStyles = () => {
-    const baseClasses = "font-nunito text-xl font-extrabold uppercase leading-tight";
+    const baseClasses =
+      "font-nunito text-xl font-extrabold uppercase leading-tight";
 
     switch (mealState) {
-      case 'past':
+      case "past":
         if (isExpanded) {
           return `${baseClasses} text-black`;
         }
         return `${baseClasses} text-black text-opacity-30`;
-      case 'current':
+      case "current":
         return `${baseClasses} text-black`;
-      case 'next':
+      case "next":
         if (isExpanded) {
           return `${baseClasses} text-black`;
         }
@@ -446,14 +448,14 @@ const DishCard = ({
     const baseClasses = "font-nunito text-base leading-normal";
 
     switch (mealState) {
-      case 'past':
+      case "past":
         if (isExpanded) {
           return `${baseClasses} text-black text-opacity-60`;
         }
         return `${baseClasses} text-black text-opacity-30`;
-      case 'current':
+      case "current":
         return `${baseClasses} text-black text-opacity-60`;
-      case 'next':
+      case "next":
         if (isExpanded) {
           return `${baseClasses} text-black text-opacity-60`;
         }
@@ -467,15 +469,13 @@ const DishCard = ({
     <button
       onClick={onClick}
       className={getCardStyles()}
-      style={mealState === 'current' ? { backgroundColor: '#F2F2F7' } : undefined}
+      style={
+        mealState === "current" ? { backgroundColor: "#F2F2F7" } : undefined
+      }
     >
       <div className="flex flex-col gap-1">
-        <h3 className={getNameStyles()}>
-          {dish.name}
-        </h3>
-        <p className={getIngredientsStyles()}>
-          {dish.ingredients}
-        </p>
+        <h3 className={getNameStyles()}>{dish.name}</h3>
+        <p className={getIngredientsStyles()}>{dish.ingredients}</p>
       </div>
 
       {isExpanded && dish.mealType && dish.time && dish.calories && (
@@ -543,37 +543,47 @@ const getCurrentTimeInMinutes = (): number => {
 };
 
 // Function to determine meal state based on current time
-type MealState = 'past' | 'current' | 'next';
+type MealState = "past" | "current" | "next";
 
-const getMealState = (dish: Dish, currentTimeMinutes: number, allDishes: Dish[]): MealState => {
-  if (!dish.time) return 'next';
+const getMealState = (
+  dish: Dish,
+  currentTimeMinutes: number,
+  allDishes: Dish[],
+): MealState => {
+  if (!dish.time) return "next";
 
   const dishTimeMinutes = parseTimeToMinutes(dish.time);
 
   // Get all dishes with time, sorted by time
   const timedDishes = allDishes
-    .filter(d => d.time)
-    .map(d => ({ ...d, timeMinutes: parseTimeToMinutes(d.time!) }))
+    .filter((d) => d.time)
+    .map((d) => ({ ...d, timeMinutes: parseTimeToMinutes(d.time!) }))
     .sort((a, b) => a.timeMinutes - b.timeMinutes);
 
   // Find the current dish index
-  const currentDishIndex = timedDishes.findIndex(d => d.id === dish.id);
-  if (currentDishIndex === -1) return 'next';
+  const currentDishIndex = timedDishes.findIndex((d) => d.id === dish.id);
+  if (currentDishIndex === -1) return "next";
 
   // Get next meal time (or end of day if this is the last meal)
-  const nextMealTime = currentDishIndex < timedDishes.length - 1
-    ? timedDishes[currentDishIndex + 1].timeMinutes
-    : 24 * 60; // End of day
+  const nextMealTime =
+    currentDishIndex < timedDishes.length - 1
+      ? timedDishes[currentDishIndex + 1].timeMinutes
+      : 24 * 60; // End of day
 
-  console.log(`Current time: ${Math.floor(currentTimeMinutes/60)}:${String(currentTimeMinutes%60).padStart(2, '0')}, Dish: ${dish.name} at ${dish.time}, Next meal at: ${Math.floor(nextMealTime/60)}:${String(nextMealTime%60).padStart(2, '0')}`);
+  console.log(
+    `Current time: ${Math.floor(currentTimeMinutes / 60)}:${String(currentTimeMinutes % 60).padStart(2, "0")}, Dish: ${dish.name} at ${dish.time}, Next meal at: ${Math.floor(nextMealTime / 60)}:${String(nextMealTime % 60).padStart(2, "0")}`,
+  );
 
   // Determine state based on time ranges
   if (currentTimeMinutes < dishTimeMinutes) {
-    return 'next';
-  } else if (currentTimeMinutes >= dishTimeMinutes && currentTimeMinutes < nextMealTime) {
-    return 'current';
+    return "next";
+  } else if (
+    currentTimeMinutes >= dishTimeMinutes &&
+    currentTimeMinutes < nextMealTime
+  ) {
+    return "current";
   } else {
-    return 'past';
+    return "past";
   }
 };
 
@@ -614,7 +624,9 @@ const findCurrentMealByTime = (dishes: Dish[]): string | null => {
 export default function Index() {
   const [activeDay, setActiveDay] = useState(getCurrentDayInUkrainian());
   const [expandedDishId, setExpandedDishId] = useState<string | null>(null);
-  const [currentTimeMinutes, setCurrentTimeMinutes] = useState(getCurrentTimeInMinutes());
+  const [currentTimeMinutes, setCurrentTimeMinutes] = useState(
+    getCurrentTimeInMinutes(),
+  );
 
   // Add error handling to prevent crashes
   const currentDayData = daysData[activeDay] || {
@@ -680,7 +692,11 @@ export default function Index() {
             <div className="flex flex-col gap-6">
               <div className="flex flex-col gap-4">
                 {currentDayData.dishes.map((dish) => {
-                  const mealState = getMealState(dish, currentTimeMinutes, currentDayData.dishes);
+                  const mealState = getMealState(
+                    dish,
+                    currentTimeMinutes,
+                    currentDayData.dishes,
+                  );
                   return (
                     <DishCard
                       key={dish.id}
