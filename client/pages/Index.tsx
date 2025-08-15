@@ -40,7 +40,7 @@ const daysData: Record<string, DayData> = {
         id: '3',
         name: 'Куряче філе на грилі з броколі',
         ingredients: 'Курка 200г; Рис 60г; Броколі 100г.',
-        mealType: 'Обі��',
+        mealType: 'Обід',
         time: '15:30',
         calories: 465,
         isActive: false
@@ -145,7 +145,7 @@ const daysData: Record<string, DayData> = {
       },
       {
         id: '4',
-        name: 'Протеїновий йогурт',
+        name: 'Про��еїновий йогурт',
         ingredients: 'Йогурт 170г.',
         mealType: 'Перекус',
         time: '18:00',
@@ -214,7 +214,7 @@ const daysData: Record<string, DayData> = {
     dishes: [
       {
         id: '1',
-        name: 'Вівсянка з молоком, бананом та горішка��и',
+        name: 'Вівсянка з молоком, бананом та горішками',
         ingredients: 'Овес 50г; Молоко 150мл; Банан 50г; Суміш горіхів 10г.',
         mealType: 'Сніданок',
         time: '10:30',
@@ -408,18 +408,18 @@ const DishCard = ({
     {isExpanded && dish.mealType && dish.time && dish.calories && (
       <div className="flex items-start gap-4">
         <div className="flex flex-col">
-          <span className="font-sf-compact text-sm sm:text-base text-meal-secondary uppercase font-semibold">
+          <span className="font-nunito text-sm sm:text-base text-meal-secondary uppercase font-semibold">
             {dish.mealType}
           </span>
-          <span className="font-sf-mono text-sm sm:text-base font-bold text-meal-accent uppercase">
+          <span className="font-nunito text-sm sm:text-base font-bold text-meal-accent uppercase">
             {dish.time}
           </span>
         </div>
         <div className="flex flex-col ml-auto">
-          <span className="font-sf-compact text-sm sm:text-base text-meal-secondary text-right uppercase font-semibold">
+          <span className="font-nunito text-sm sm:text-base text-meal-secondary text-right uppercase font-semibold">
             калорії
           </span>
-          <span className="font-sf-mono text-sm sm:text-base font-bold text-meal-accent text-right uppercase">
+          <span className="font-nunito text-sm sm:text-base font-bold text-meal-accent text-right uppercase">
             {dish.calories}
           </span>
         </div>
@@ -534,7 +534,7 @@ export default function Index() {
     'четвер',
     'п\'ятниця',
     'субота',
-    'неділя'
+    '��еділя'
   ];
 
   return (
