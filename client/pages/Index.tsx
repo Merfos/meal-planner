@@ -181,7 +181,7 @@ const daysData: Record<string, DayData> = {
         id: "2",
         name: "Протеїновий смузі",
         ingredients: "Протеїн 30г; Банан 100г; Молоко 150мл.",
-        mealType: "Пер��кус",
+        mealType: "Перекус",
         time: "13:00",
         calories: 284,
         isActive: false,
@@ -481,6 +481,23 @@ const parseTimeToMinutes = (timeStr: string): number => {
 const getCurrentTimeInMinutes = (): number => {
   const now = new Date();
   return now.getHours() * 60 + now.getMinutes();
+};
+
+// Function to determine meal state based on current time
+type MealState = 'past' | 'current' | 'next';
+
+const getMealState = (dish: Dish, currentTimeMinutes: number): MealState => {
+  if (!dish.time) return 'next';
+
+  const dishTimeMinutes = parseTimeToMinutes(dish.time);
+  const timeDifference = Math.abs(dishTimeMinutes - currentTimeMinutes);
+
+  // Consider a meal "current" if we're within 30 minutes of its time
+  const isCurrentTime = timeDifference <= 30;
+
+  if (isCurrentTime) return 'current';
+  if (dishTimeMinutes < currentTimeMinutes) return 'past';
+  return 'next';
 };
 
 // Function to find the most appropriate dish based on current time
