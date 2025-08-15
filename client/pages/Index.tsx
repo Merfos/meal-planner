@@ -40,7 +40,7 @@ const daysData: Record<string, DayData> = {
         id: '3',
         name: 'Куряче філе на грилі з броколі',
         ingredients: 'Курка 200г; Рис 60г; Броколі 100г.',
-        mealType: 'Обід',
+        mealType: 'Обі��',
         time: '15:30',
         calories: 465,
         isActive: false
@@ -177,7 +177,7 @@ const daysData: Record<string, DayData> = {
         id: '2',
         name: 'Банан і горішки',
         ingredients: 'Банан 120г; Суміш горіхів 20г.',
-        mealType: '��ніданок',
+        mealType: 'Сніданок',
         time: '13:00',
         calories: 385,
         isActive: false
@@ -214,7 +214,7 @@ const daysData: Record<string, DayData> = {
     dishes: [
       {
         id: '1',
-        name: 'Вівсянка з молоком, бананом та горішками',
+        name: 'Вівсянка з молоком, бананом та горішка��и',
         ingredients: 'Овес 50г; Молоко 150мл; Банан 50г; Суміш горіхів 10г.',
         mealType: 'Сніданок',
         time: '10:30',
@@ -395,12 +395,12 @@ const DishCard = ({
   >
     <div className="flex flex-col gap-1">
       <h3 className={`
-        font-sf-compact text-base sm:text-lg md:text-xl lg:text-2xl font-bold uppercase leading-tight
+        font-nunito text-base sm:text-lg md:text-xl lg:text-2xl font-bold uppercase leading-tight
         ${isExpanded ? 'text-meal-primary' : 'text-meal-secondary'}
       `}>
         {dish.name}
       </h3>
-      <p className="font-sf-compact text-sm sm:text-base text-meal-secondary leading-normal">
+      <p className="font-nunito text-sm sm:text-base text-meal-secondary leading-normal">
         {dish.ingredients}
       </p>
     </div>
