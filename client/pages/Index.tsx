@@ -138,7 +138,7 @@ const daysData: Record<string, DayData> = {
       },
       {
         id: "3",
-        name: "Картопля зі свининою на грилі та салатом зі шпинату",
+        name: "Картопля зі сви��иною на грилі та салатом зі шпинату",
         ingredients: "Картопля 200г; Свинина 150г; Шпинат 30г.",
         mealType: "Обід",
         time: "15:30",
@@ -189,7 +189,7 @@ const daysData: Record<string, DayData> = {
       {
         id: "3",
         name: "Булгур з курячим стегном на грилі та салотом",
-        ingredients: "Булгур 60г; Кур��че стегно 150г; Салат 100г.",
+        ingredients: "Булгур 60г; Куряче стегно 150г; Салат 100г.",
         mealType: "Обід",
         time: "15:30",
         calories: 415,
@@ -230,7 +230,7 @@ const daysData: Record<string, DayData> = {
       {
         id: "2",
         name: "Сухофрукти і горішки",
-        ingredients: "Сухофрукти 30г; Сум��ш горіхів 15г.",
+        ingredients: "Сухофрукти 30г; Суміш горіхів 15г.",
         mealType: "Перекус",
         time: "13:00",
         calories: 175,
@@ -257,7 +257,7 @@ const daysData: Record<string, DayData> = {
       {
         id: "5",
         name: "Овочеве рагу з квасолею та яйцем",
-        ingredients: "Овочі 250г; Квасоля 100г; Варене яйце 1шт.",
+        ingredients: "Овочі 250г; Квасо��я 100г; Варене яйце 1шт.",
         mealType: "Вечеря",
         time: "20:30",
         calories: 305,
@@ -356,7 +356,7 @@ const daysData: Record<string, DayData> = {
       },
       {
         id: "5",
-        name: "Зпечений баклажан з фарш��м, сиром та моцарелою",
+        name: "Зпечений баклажан з фаршем, сиром та моцарелою",
         ingredients:
           "Баклажан 200г; Фарш 100г; Овочі 100г; Сир 30г; Моцарела 40г.",
         mealType: "Вечеря",
@@ -467,6 +467,7 @@ const DishCard = ({
     <button
       onClick={onClick}
       className={getCardStyles()}
+      style={mealState === 'current' ? { backgroundColor: '#F2F2F7' } : undefined}
     >
       <div className="flex flex-col gap-1">
         <h3 className={getNameStyles()}>
