@@ -70,7 +70,7 @@ const daysData: Record<string, DayData> = {
     dishes: [
       {
         id: "1",
-        name: "��млет з помідорами та хлібом з цільного зерна і фетою",
+        name: "Омлет з помідорами та хлібом з цільного зерна і фетою",
         ingredients: "Яйця 2шт; Помідори 100г; Хліб 40г; Фета 40г.",
         mealType: "Сніданок",
         time: "10:30",
@@ -208,7 +208,7 @@ const daysData: Record<string, DayData> = {
         id: "5",
         name: "Котлети з індички з печеними овочами",
         ingredients: "Котлети з індички 180г; овочі 150г.",
-        mealType: "Вечеря",
+        mealType: "Вечер��",
         time: "20:30",
         calories: 342,
         isActive: false,
@@ -356,7 +356,7 @@ const daysData: Record<string, DayData> = {
       },
       {
         id: "5",
-        name: "Зпечений баклажан з фаршем, сир��м та моцарелою",
+        name: "Зпечений баклажан з фаршем, сиром та моцарелою",
         ingredients:
           "Баклажан 200г; Фарш 100г; Овочі 100г; Сир 30г; Моцарела 40г.",
         mealType: "Вечеря",
@@ -422,16 +422,18 @@ const DishCard = ({
   const getNameStyles = () => {
     const baseClasses = "font-nunito text-xl font-extrabold uppercase leading-tight";
 
-    if (isExpanded) {
-      return `${baseClasses} text-black`;
-    }
-
     switch (mealState) {
       case 'past':
+        if (isExpanded) {
+          return `${baseClasses} text-black`;
+        }
         return `${baseClasses} text-black text-opacity-30`;
       case 'current':
         return `${baseClasses} text-black`;
       case 'next':
+        if (isExpanded) {
+          return `${baseClasses} text-black`;
+        }
         return `${baseClasses} text-black text-opacity-60`;
       default:
         return `${baseClasses} text-meal-secondary`;
@@ -441,16 +443,18 @@ const DishCard = ({
   const getIngredientsStyles = () => {
     const baseClasses = "font-nunito text-base leading-normal";
 
-    if (isExpanded) {
-      return `${baseClasses} text-black text-opacity-60`;
-    }
-
     switch (mealState) {
       case 'past':
+        if (isExpanded) {
+          return `${baseClasses} text-black text-opacity-60`;
+        }
         return `${baseClasses} text-black text-opacity-30`;
       case 'current':
         return `${baseClasses} text-black text-opacity-60`;
       case 'next':
+        if (isExpanded) {
+          return `${baseClasses} text-black text-opacity-60`;
+        }
         return `${baseClasses} text-black text-opacity-30`;
       default:
         return `${baseClasses} text-meal-secondary`;
