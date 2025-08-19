@@ -100,7 +100,7 @@ const daysData: Record<string, DayData> = {
         name: "Морква з хумусом",
         ingredients: "Морква 100г; Хумус 40г.",
         mealType: "Перекус",
-        time: "10:30",
+        time: "18:00",
         calories: 135,
         isActive: false,
       },
