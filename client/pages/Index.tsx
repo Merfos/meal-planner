@@ -89,10 +89,10 @@ const daysData: Record<string, DayData> = {
       {
         id: "3",
         name: "Гречка з котлетами з індички та овочами на пару",
-        ingredients: "Гречка 60г; Котлети з індички180г; Овочі 200г.",
+        ingredients: "Гречка 40г; Котлети з індички 60г; Овочі 200г.",
         mealType: "Обід",
         time: "15:30",
-        calories: 522,
+        calories: 437,
         isActive: false,
       },
       {
@@ -114,7 +114,7 @@ const daysData: Record<string, DayData> = {
         isActive: false,
       },
     ],
-    totalCalories: 1627,
+    totalCalories: 1542,
   },
   середа: {
     dishes: [
@@ -138,11 +138,11 @@ const daysData: Record<string, DayData> = {
       },
       {
         id: "3",
-        name: "Картопля зі свининою на грилі та салатом зі шпинату",
-        ingredients: "Картопля 200г; Свинина 150г; Шпинат 30г.",
+        name: "Булгур з курячим стегном на грилі та салотом",
+        ingredients: "Булгур 60г; Куряче стегно 150г; Салат 100г.",
         mealType: "Обід",
         time: "15:30",
-        calories: 507,
+        calories: 415,
         isActive: false,
       },
       {
@@ -164,17 +164,17 @@ const daysData: Record<string, DayData> = {
         isActive: false,
       },
     ],
-    totalCalories: 1686,
+    totalCalories: 1595,
   },
   четвер: {
     dishes: [
       {
         id: "1",
-        name: "Два тости з авокадо",
-        ingredients: "Цільнозерновий хліб 2шт; Авокадо 50г; Яйце варене 1шт.",
+        name: "Яєчний мафін",
+        ingredients: "Яйце 3шт; Молоко 30мл; Сир твердий 30г; Перець болгарський 60г; Шпинат 30г.",
         mealType: "Сніданок",
         time: "10:30",
-        calories: 480,
+        calories: 444,
         isActive: true,
       },
       {
@@ -188,11 +188,11 @@ const daysData: Record<string, DayData> = {
       },
       {
         id: "3",
-        name: "Булгур з курячим стегном на грилі та салотом",
-        ingredients: "Булгур 60г; Куряче стегно 150г; Салат 100г.",
+        name: "Картопля зі свининою на грилі та салатом зі шпинату",
+        ingredients: "Картопля 200г; Свинина 150г; Шпинат 30г.",
         mealType: "Обід",
         time: "15:30",
-        calories: 415,
+        calories: 507,
         isActive: false,
       },
       {
@@ -214,7 +214,7 @@ const daysData: Record<string, DayData> = {
         isActive: false,
       },
     ],
-    totalCalories: 1626,
+    totalCalories: 1682,
   },
   "п'ятниця": {
     dishes: [
@@ -238,11 +238,11 @@ const daysData: Record<string, DayData> = {
       },
       {
         id: "3",
-        name: "Грепчка з котлетами з індички та овочами",
-        ingredients: "Гречка 60г; Котлети з індички 180г; Вовочі 200г.",
+        name: "Гречка з котлетами з індички та овочами на пару",
+        ingredients: "Гречка 40г; Котлети з індички 60г; Овочі 200г.",
         mealType: "Обід",
         time: "15:30",
-        calories: 522,
+        calories: 437,
         isActive: false,
       },
       {
@@ -264,17 +264,17 @@ const daysData: Record<string, DayData> = {
         isActive: false,
       },
     ],
-    totalCalories: 1627,
+    totalCalories: 1542,
   },
   субота: {
     dishes: [
       {
         id: "1",
-        name: "Тости з арахісовою пастою і яблуком",
-        ingredients: "Хліб 2шт; Арахісова паста 20г; Яблуко 100г.",
+        name: "Сендвіч з шинкою",
+        ingredients: "Хліб 2шт; Шинка 75г; Сир твердий 20г; Огірок 80г; Листя салату 30г; Гірчиця 8г.",
         mealType: "Сніданок",
         time: "10:30",
-        calories: 614,
+        calories: 320,
         isActive: true,
       },
       {
@@ -306,15 +306,15 @@ const daysData: Record<string, DayData> = {
       },
       {
         id: "5",
-        name: "Курка з кабачками та помідорами",
-        ingredients: "Куряче філе 200г; Кабачок 150г; Помідор 50г.",
+        name: "Вершкове рагу",
+        ingredients: "Вершки 80г; Олія 5г; Вода 75г; Куряче філе 150г; Броколі 50г; Цвітна капуста 50г; Морква 50г; Болгарський перець 40г; Брюсельська капуста 40г.",
         mealType: "Вечеря",
         time: "20:30",
-        calories: 260,
+        calories: 410,
         isActive: false,
       },
     ],
-    totalCalories: 1629,
+    totalCalories: 1485,
   },
   неділя: {
     dishes: [
