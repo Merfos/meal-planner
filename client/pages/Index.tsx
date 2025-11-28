@@ -173,9 +173,9 @@ const DishCard = ({
 };
 
 const TotalCaloriesCard = ({ totalCalories }: { totalCalories: number }) => (
-  <div className="flex items-center gap-4 p-6 rounded-2xl border border-meal-border bg-meal-background sm:justify-start sm:items-end">
+  <div className="flex items-center gap-4 p-6 rounded-3xl border border-meal-border bg-meal-background sm:justify-start sm:items-end">
     <span className="flex-1 font-nunito text-base font-extrabold text-meal-primary uppercase">
-      усього калорій на день:
+      усього:
     </span>
     <span className="font-nunito text-base font-extrabold text-meal-accent text-right uppercase">
       {totalCalories} ккал
@@ -322,7 +322,39 @@ export default function Index() {
     const saved = localStorage.getItem("MEAL_PLAN_DATA");
     if (saved) {
       try {
-        return JSON.parse(saved);
+        const parsedSaved = JSON.parse(saved);
+        // Merge saved data with static data to ensure new fields (like recipe) are present
+        const mergedData = { ...daysData };
+
+        Object.keys(mergedData).forEach(day => {
+          if (parsedSaved[day]) {
+            mergedData[day] = {
+              ...mergedData[day],
+              dishes: mergedData[day].dishes.map((staticDish, index) => {
+                const savedDish = parsedSaved[day].dishes.find((d: Dish) => d.id === staticDish.id);
+                if (savedDish) {
+                  // Keep user-specific state (isActive, maybe name if swapped) but ensure static content (recipe, macros) is up to date
+                  // If the dish name matches, we assume it's the same dish and we should update its static properties
+                  if (savedDish.name === staticDish.name) {
+                    return {
+                      ...savedDish,
+                      recipe: staticDish.recipe,
+                      macros: staticDish.macros,
+                      ingredients: staticDish.ingredients // Ensure ingredients are also up to date
+                    };
+                  }
+                  // If names don't match, it means the user swapped the dish. 
+                  // In this case, we keep the saved dish as is, BUT we should try to find the recipe for this swapped dish from our static data if possible.
+                  // For now, let's just keep the saved dish. If it's a swapped dish, it might not have a recipe unless we look it up.
+                  return savedDish;
+                }
+                return staticDish;
+              }),
+              totalCalories: parsedSaved[day].totalCalories // Keep the calculated calories
+            };
+          }
+        });
+        return mergedData;
       } catch (e) {
         console.error("Failed to parse saved meal plan", e);
       }
@@ -348,9 +380,8 @@ export default function Index() {
   // Set initial expanded dish when component mounts or day changes, based on current time
   useEffect(() => {
     const appropriateMealId = findCurrentMealByTime(currentDayData.dishes);
-    if (appropriateMealId && !expandedDishIds.includes(appropriateMealId)) {
-      setExpandedDishIds([appropriateMealId]);
-    }
+    // Reset to only show current meal when day changes (collapse manually expanded cards)
+    setExpandedDishIds(appropriateMealId ? [appropriateMealId] : []);
   }, [activeDay, currentDayData.dishes]);
 
   // Save to local storage whenever data changes
@@ -436,10 +467,10 @@ export default function Index() {
   }, [activeDay, emblaApi, days]);
 
   return (
-    <div className="min-h-screen bg-meal-background">
-      <div className="flex justify-center px-4 sm:px-6 lg:px-8 pb-6 sm:pb-8">
+    <div className="h-screen bg-meal-background flex flex-col">
+      <div className="flex justify-center px-4 sm:px-6 lg:px-8">
         <div className="w-full max-w-5xl">
-          <div className="flex flex-col">
+          <div className="flex flex-col h-screen">
             {/* Day Tabs */}
             <div className="sticky top-0 z-10 bg-white pb-4 mb-4">
               <div className="flex items-center gap-3 sm:gap-4 md:gap-6 lg:gap-8 overflow-x-auto scrollbar-hide justify-start pt-6 sm:pt-8">
@@ -460,13 +491,13 @@ export default function Index() {
             </div>
 
             {/* Carousel Container */}
-            <div className="overflow-hidden" ref={emblaRef}>
+            <div className="overflow-hidden flex-1" ref={emblaRef}>
               <div className="flex">
                 {days.map((day) => {
                   const dayData = daysDataState[day] || { dishes: [], totalCalories: 0 };
                   return (
                     <div key={day} className="flex-[0_0_100%] min-w-0 px-2">
-                      <div className="flex flex-col gap-6">
+                      <div className="flex flex-col gap-6 overflow-y-auto h-full pb-6">
                         <div className="flex flex-col gap-4">
                           {dayData.dishes.map((dish) => {
                             const mealState = getMealState(
@@ -660,7 +691,7 @@ export default function Index() {
           </DrawerHeader>
           <div className="flex-1 overflow-y-auto p-6">
             {infoDish && (
-              <div className="flex flex-col gap-8">
+              <div className="flex flex-col gap-6">
                 <h2 className="font-nunito text-2xl font-black uppercase leading-tight">
                   {infoDish.name}
                 </h2>
@@ -692,11 +723,11 @@ export default function Index() {
                   </div>
                 </div>
 
-                <div className="flex flex-col gap-4">
+                <div className="flex flex-col gap-1">
                   <h3 className="font-nunito text-lg font-extrabold text-meal-secondary uppercase">
                     ІНГРЕДІЄНТИ
                   </h3>
-                  <div className="flex flex-col gap-2">
+                  <div className="flex flex-col gap-0">
                     {infoDish.ingredients.split(";").map((ingredient, index) => {
                       const trimmed = ingredient.trim();
                       if (!trimmed) return null;
@@ -709,7 +740,7 @@ export default function Index() {
                   </div>
                 </div>
 
-                <div className="flex flex-col gap-4">
+                <div className="flex flex-col gap-1">
                   <h3 className="font-nunito text-lg font-extrabold text-meal-secondary uppercase">
                     РЕЦЕПТ
                   </h3>
