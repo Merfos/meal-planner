@@ -1,0 +1,387 @@
+export interface Dish {
+    id: string;
+    name: string;
+    ingredients: string;
+    mealType?: string;
+    time?: string;
+    calories?: number;
+    isActive?: boolean;
+    recipe?: string[];
+    macros?: {
+        protein: number;
+        fat: number;
+        carbs: number;
+    };
+}
+
+export interface DayData {
+    dishes: Dish[];
+    totalCalories: number;
+}
+
+export const daysData: Record<string, DayData> = {
+    понеділок: {
+        dishes: [
+            {
+                id: "1",
+                name: "Вівсянка з молоком, бананом та горішками",
+                ingredients: "Овес 50г; Молоко 150мл; Банан 50г; Суміш горіхів 10г.",
+                mealType: "Сніданок",
+                time: "10:30",
+                calories: 385,
+                isActive: true,
+                recipe: [
+                    "Зваріть основу: Нагрійте молоко або воду в каструлі, додайте щіпку солі.",
+                    "Додайте пластівці: Всипте вівсяні пластівці і доведіть до кипіння, потім зменште вогонь до мінімального.",
+                    "Додайте банан: Розімніть банан виделкою і додайте його до каші. Перемішайте, щоб банан рівномірно розподілився.",
+                    "Варіть: Варіть кашу 3-5 хвилин (для швидкого варіння) або 7-10 хвилин (для традиційних пластівців), періодично помішуючи, доки не досягнете бажаної консистенції.",
+                    "Додайте горіхи: Зніміть каструлю з вогню. Додайте подрібнені горіхи, цукор та корицю за смаком.",
+                    "Подавайте: Подавайте гарячу вівсянку, за бажанням прикрасивши шматочками банана або горіхами."
+                ],
+                macros: {
+                    protein: 12,
+                    fat: 15,
+                    carbs: 55
+                }
+            },
+            {
+                id: "2",
+                name: "Банан і горішки",
+                ingredients: "Банан 120г; Суміш горіхів 20г.",
+                mealType: "Перекус",
+                time: "13:00",
+                calories: 228,
+                isActive: false,
+            },
+            {
+                id: "3",
+                name: "Куряче філе на грилі з броколі",
+                ingredients: "Курка 200г; Рис 60г; Броколі 100г.",
+                mealType: "Обід",
+                time: "15:30",
+                calories: 465,
+                isActive: false,
+            },
+            {
+                id: "4",
+                name: "Протеїновий йогурт",
+                ingredients: "Йогурт 170г.",
+                mealType: "Перекус",
+                time: "18:00",
+                calories: 140,
+                isActive: false,
+            },
+            {
+                id: "5",
+                name: "Омлет з овочами та салатом",
+                ingredients: "Яйця 2шт; Хумус 40г; Хліб 2шт; Салат 50г.",
+                mealType: "Вечеря",
+                time: "20:30",
+                calories: 470,
+                isActive: false,
+            },
+        ],
+        totalCalories: 1668,
+    },
+    вівторок: {
+        dishes: [
+            {
+                id: "1",
+                name: "Омлет з помідорами та хлібом з цільного зерна і фетою",
+                ingredients: "Яйця 2шт; Помідори 100г; Хліб 40г; Фета 40г.",
+                mealType: "Сніданок",
+                time: "10:30",
+                calories: 410,
+                isActive: true,
+            },
+            {
+                id: "2",
+                name: "Протеїновий шейк",
+                ingredients: "Протеїн 30г; Молоко 250мл.",
+                mealType: "Перекус",
+                time: "13:00",
+                calories: 245,
+                isActive: false,
+            },
+            {
+                id: "3",
+                name: "Гречка з котлетами з індички та овочами на пару",
+                ingredients: "Гречка 40г; Котлети з індички 60г; Овочі 200г.",
+                mealType: "Обід",
+                time: "15:30",
+                calories: 437,
+                isActive: false,
+            },
+            {
+                id: "4",
+                name: "Морква з хумусом",
+                ingredients: "Морква 100г; Хумус 40г.",
+                mealType: "Перекус",
+                time: "18:00",
+                calories: 135,
+                isActive: false,
+            },
+            {
+                id: "5",
+                name: "Запечене куряче стегно з овочами",
+                ingredients: "Куряче стегно 100г; Овочі 150г.",
+                mealType: "Вечеря",
+                time: "20:30",
+                calories: 315,
+                isActive: false,
+            },
+        ],
+        totalCalories: 1542,
+    },
+    середа: {
+        dishes: [
+            {
+                id: "1",
+                name: "Сирники з ягодами та джемом",
+                ingredients: "Сирники 150г; Ягодин 100г.",
+                mealType: "Сніданок",
+                time: "10:30",
+                calories: 365,
+                isActive: true,
+            },
+            {
+                id: "2",
+                name: "Суміш горіхів та яблуко",
+                ingredients: "Горіхи 20г; Яблуко 150г.",
+                mealType: "Сніданок",
+                time: "13:00",
+                calories: 200,
+                isActive: false,
+            },
+            {
+                id: "3",
+                name: "Булгур з курячим стегном на грилі та салотом",
+                ingredients: "Булгур 60г; Куряче стегно 150г; Салат 100г.",
+                mealType: "Обід",
+                time: "15:30",
+                calories: 415,
+                isActive: false,
+            },
+            {
+                id: "4",
+                name: "Протеїновий йогурт",
+                ingredients: "Йогурт 170г.",
+                mealType: "Перекус",
+                time: "18:00",
+                calories: 140,
+                isActive: false,
+            },
+            {
+                id: "5",
+                name: "Куряче філе на грилі з моцарелою та овочами",
+                ingredients: "Курка 250г; Овочі 150г; Моцарела 50г.",
+                mealType: "Вечеря",
+                time: "20:30",
+                calories: 475,
+                isActive: false,
+            },
+        ],
+        totalCalories: 1595,
+    },
+    четвер: {
+        dishes: [
+            {
+                id: "1",
+                name: "Яєчний мафін",
+                ingredients: "Яйце 3шт; Молоко 30мл; Сир твердий 30г; Перець болгарський 60г; Шпинат 30г.",
+                mealType: "Сніданок",
+                time: "10:30",
+                calories: 444,
+                isActive: true,
+            },
+            {
+                id: "2",
+                name: "Протеїновий смузі",
+                ingredients: "Протеїн 30г; Банан 100г; Молоко 150мл.",
+                mealType: "Перекус",
+                time: "13:00",
+                calories: 284,
+                isActive: false,
+            },
+            {
+                id: "3",
+                name: "Картопля зі свининою на грилі та салотом зі шпинату",
+                ingredients: "Картопля 200г; Свинина 150г; Шпинат 30г.",
+                mealType: "Обід",
+                time: "15:30",
+                calories: 507,
+                isActive: false,
+            },
+            {
+                id: "4",
+                name: "Сухофрукти з чаєм",
+                ingredients: "Сухофрукти 30г.",
+                mealType: "Перекус",
+                time: "18:00",
+                calories: 105,
+                isActive: false,
+            },
+            {
+                id: "5",
+                name: "Котлети з індички з печеними овочами",
+                ingredients: "Котлети з індички 180г; овочі 150г.",
+                mealType: "Вечеря",
+                time: "20:30",
+                calories: 342,
+                isActive: false,
+            },
+        ],
+        totalCalories: 1682,
+    },
+    "п'ятниця": {
+        dishes: [
+            {
+                id: "1",
+                name: "Вівсянка з молоком, бананом та горішками",
+                ingredients: "Овес 50г; Молоко 150мл; Банан 50г; Суміш горіхів 20г.",
+                mealType: "Сніданок",
+                time: "10:30",
+                calories: 490,
+                isActive: true,
+            },
+            {
+                id: "2",
+                name: "Сухофрукти і горішки",
+                ingredients: "Сухофрукти 30г; Суміш горіхів 15г.",
+                mealType: "Перекус",
+                time: "13:00",
+                calories: 175,
+                isActive: false,
+            },
+            {
+                id: "3",
+                name: "Гречка з котлетами з індички та овочами на пару",
+                ingredients: "Гречка 40г; Котлети з індички 60г; Овочі 200г.",
+                mealType: "Обід",
+                time: "15:30",
+                calories: 437,
+                isActive: false,
+            },
+            {
+                id: "4",
+                name: "Морква з хумусом",
+                ingredients: "Морква 100г; Хумус 40г.",
+                mealType: "Перекус",
+                time: "18:00",
+                calories: 135,
+                isActive: false,
+            },
+            {
+                id: "5",
+                name: "Овочеве рагу з квасолею та яйцем",
+                ingredients: "Овочі 250г; Квасоля 100г; Варене яйце 1шт.",
+                mealType: "Вечеря",
+                time: "20:30",
+                calories: 305,
+                isActive: false,
+            },
+        ],
+        totalCalories: 1542,
+    },
+    субота: {
+        dishes: [
+            {
+                id: "1",
+                name: "Сендвіч з шинкою",
+                ingredients: "Хліб 2шт; Шинка 75г; Сир твердий 20г; Огірок 80г; Листя салату 30г; Гірчиця 8г.",
+                mealType: "Сніданок",
+                time: "10:30",
+                calories: 320,
+                isActive: true,
+            },
+            {
+                id: "2",
+                name: "Банан і горішки",
+                ingredients: "Банан 100г; Суміш горіхів 10г.",
+                mealType: "Перекус",
+                time: "13:00",
+                calories: 150,
+                isActive: false,
+            },
+            {
+                id: "3",
+                name: "Рис з курячим філе на грилі та броколі",
+                ingredients: "Рис 60г; Курка 200г; Броколі 100г.",
+                mealType: "Обід",
+                time: "15:30",
+                calories: 465,
+                isActive: false,
+            },
+            {
+                id: "4",
+                name: "Протеїновий йогурт",
+                ingredients: "Йогурт 170г.",
+                mealType: "Перекус",
+                time: "18:00",
+                calories: 140,
+                isActive: false,
+            },
+            {
+                id: "5",
+                name: "Вершкове рагу",
+                ingredients: "Вершки 80г; Олія 5г; Вода 75г; Куряче філе 150г; Броколі 50г; Цвітна капуста 50г; Морква 50г; Болгарський перець 40г; Брюсельська капуста 40г.",
+                mealType: "Вечеря",
+                time: "20:30",
+                calories: 410,
+                isActive: false,
+            },
+        ],
+        totalCalories: 1485,
+    },
+    неділя: {
+        dishes: [
+            {
+                id: "1",
+                name: "Сирники з ягодами та джемом",
+                ingredients: "Сирники 150г; Ягоди 100г.",
+                mealType: "Сніданок",
+                time: "10:30",
+                calories: 363,
+                isActive: true,
+            },
+            {
+                id: "2",
+                name: "Протеїновий шейк",
+                ingredients: "Протеїн 30г; Молоко 250мл.",
+                mealType: "Перекус",
+                time: "13:00",
+                calories: 245,
+                isActive: false,
+            },
+            {
+                id: "3",
+                name: "Лаваш з куркою, сиром та овочами",
+                ingredients: "Лаваш 1шт; Курка 100г; Сир 30г; Овочі 150г.",
+                mealType: "Обід",
+                time: "15:30",
+                calories: 445,
+                isActive: false,
+            },
+            {
+                id: "4",
+                name: "Суміш горіхів з яблуком",
+                ingredients: "Горіхи 20г; Яблуко 150г.",
+                mealType: "Перекус",
+                time: "18:00",
+                calories: 200,
+                isActive: false,
+            },
+            {
+                id: "5",
+                name: "Зпечений баклажан з фаршем, сиром та моцарелою",
+                ingredients:
+                    "Баклажан 200г; Фарш 100г; Овочі 100г; Сир 30г; Моцарела 40г.",
+                mealType: "Вечеря",
+                time: "20:30",
+                calories: 470,
+                isActive: false,
+            },
+        ],
+        totalCalories: 1723,
+    },
+};

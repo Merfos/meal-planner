@@ -1,373 +1,16 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
+import useEmblaCarousel from "embla-carousel-react";
+import { Repeat, Dices, Info, X } from "lucide-react";
+import {
+  Drawer,
+  DrawerClose,
+  DrawerContent,
+  DrawerHeader,
+  DrawerTitle,
+  DrawerTrigger,
+} from "@/components/ui/drawer";
 
-interface Dish {
-  id: string;
-  name: string;
-  ingredients: string;
-  mealType?: string;
-  time?: string;
-  calories?: number;
-  isActive?: boolean;
-}
-
-interface DayData {
-  dishes: Dish[];
-  totalCalories: number;
-}
-
-const daysData: Record<string, DayData> = {
-  понеділок: {
-    dishes: [
-      {
-        id: "1",
-        name: "Вівсянка з молоком, бананом та горішками",
-        ingredients: "Овес 50г; Молоко 150мл; Банан 50г; Суміш горіхів 10г.",
-        mealType: "Сніданок",
-        time: "10:30",
-        calories: 385,
-        isActive: true,
-      },
-      {
-        id: "2",
-        name: "Банан і горішки",
-        ingredients: "Банан 120г; Суміш горіхів 20г.",
-        mealType: "Перекус",
-        time: "13:00",
-        calories: 228,
-        isActive: false,
-      },
-      {
-        id: "3",
-        name: "Куряче філе на грилі з броколі",
-        ingredients: "Курка 200г; Рис 60г; Броколі 100г.",
-        mealType: "Обід",
-        time: "15:30",
-        calories: 465,
-        isActive: false,
-      },
-      {
-        id: "4",
-        name: "Протеїновий йогурт",
-        ingredients: "Йогурт 170г.",
-        mealType: "Перекус",
-        time: "18:00",
-        calories: 140,
-        isActive: false,
-      },
-      {
-        id: "5",
-        name: "Омлет з овочами та салатом",
-        ingredients: "Яйця 2шт; Хумус 40г; Хліб 2шт; Салат 50г.",
-        mealType: "Вечеря",
-        time: "20:30",
-        calories: 470,
-        isActive: false,
-      },
-    ],
-    totalCalories: 1668,
-  },
-  вівторок: {
-    dishes: [
-      {
-        id: "1",
-        name: "Омлет з помідорами та хлібом з цільного зерна і фетою",
-        ingredients: "Яйця 2шт; Помідори 100г; Хліб 40г; Фета 40г.",
-        mealType: "Сніданок",
-        time: "10:30",
-        calories: 410,
-        isActive: true,
-      },
-      {
-        id: "2",
-        name: "Протеїновий шейк",
-        ingredients: "Протеїн 30г; Молоко 250мл.",
-        mealType: "Перекус",
-        time: "13:00",
-        calories: 245,
-        isActive: false,
-      },
-      {
-        id: "3",
-        name: "Гречка з котлетами з індички та овочами на пару",
-        ingredients: "Гречка 40г; Котлети з індички 60г; Овочі 200г.",
-        mealType: "Обід",
-        time: "15:30",
-        calories: 437,
-        isActive: false,
-      },
-      {
-        id: "4",
-        name: "Морква з хумусом",
-        ingredients: "Морква 100г; Хумус 40г.",
-        mealType: "Перекус",
-        time: "18:00",
-        calories: 135,
-        isActive: false,
-      },
-      {
-        id: "5",
-        name: "Запечене куряче стегно з овочами",
-        ingredients: "Куряче стегно 100г; Овочі 150г.",
-        mealType: "Вечеря",
-        time: "20:30",
-        calories: 315,
-        isActive: false,
-      },
-    ],
-    totalCalories: 1542,
-  },
-  середа: {
-    dishes: [
-      {
-        id: "1",
-        name: "Сирники з ягодами та джемом",
-        ingredients: "Сирники 150г; Ягодин 100г.",
-        mealType: "Сніданок",
-        time: "10:30",
-        calories: 365,
-        isActive: true,
-      },
-      {
-        id: "2",
-        name: "Суміш горіхів та яблуко",
-        ingredients: "Горіхи 20г; Яблуко 150г.",
-        mealType: "Сніданок",
-        time: "13:00",
-        calories: 200,
-        isActive: false,
-      },
-      {
-        id: "3",
-        name: "Булгур з курячим стегном на грилі та салотом",
-        ingredients: "Булгур 60г; Куряче стегно 150г; Салат 100г.",
-        mealType: "Обід",
-        time: "15:30",
-        calories: 415,
-        isActive: false,
-      },
-      {
-        id: "4",
-        name: "Протеїновий йогурт",
-        ingredients: "Йогурт 170г.",
-        mealType: "Перекус",
-        time: "18:00",
-        calories: 140,
-        isActive: false,
-      },
-      {
-        id: "5",
-        name: "Куряче філе на грилі з моцарелою та овочами",
-        ingredients: "Курка 250г; Овочі 150г; Моцарела 50г.",
-        mealType: "Вечеря",
-        time: "20:30",
-        calories: 475,
-        isActive: false,
-      },
-    ],
-    totalCalories: 1595,
-  },
-  четвер: {
-    dishes: [
-      {
-        id: "1",
-        name: "Яєчний мафін",
-        ingredients: "Яйце 3шт; Молоко 30мл; Сир твердий 30г; Перець болгарський 60г; Шпинат 30г.",
-        mealType: "Сніданок",
-        time: "10:30",
-        calories: 444,
-        isActive: true,
-      },
-      {
-        id: "2",
-        name: "Протеїновий смузі",
-        ingredients: "Протеїн 30г; Банан 100г; Молоко 150мл.",
-        mealType: "Перекус",
-        time: "13:00",
-        calories: 284,
-        isActive: false,
-      },
-      {
-        id: "3",
-        name: "Картопля зі свининою на грилі та салатом зі шпинату",
-        ingredients: "Картопля 200г; Свинина 150г; Шпинат 30г.",
-        mealType: "Обід",
-        time: "15:30",
-        calories: 507,
-        isActive: false,
-      },
-      {
-        id: "4",
-        name: "Сухофрукти з чаєм",
-        ingredients: "Сухофрукти 30г.",
-        mealType: "Перекус",
-        time: "18:00",
-        calories: 105,
-        isActive: false,
-      },
-      {
-        id: "5",
-        name: "Котлети з індички з печеними овочами",
-        ingredients: "Котлети з індички 180г; овочі 150г.",
-        mealType: "Вечеря",
-        time: "20:30",
-        calories: 342,
-        isActive: false,
-      },
-    ],
-    totalCalories: 1682,
-  },
-  "п'ятниця": {
-    dishes: [
-      {
-        id: "1",
-        name: "Вівсянка з молоком, бананом та горішками",
-        ingredients: "Овес 50г; Молоко 150мл; Банан 50г; Суміш горіхів 20г.",
-        mealType: "Сніданок",
-        time: "10:30",
-        calories: 490,
-        isActive: true,
-      },
-      {
-        id: "2",
-        name: "Сухофрукти і горішки",
-        ingredients: "Сухофрукти 30г; Суміш горіхів 15г.",
-        mealType: "Перекус",
-        time: "13:00",
-        calories: 175,
-        isActive: false,
-      },
-      {
-        id: "3",
-        name: "Гречка з котлетами з індички та овочами на пару",
-        ingredients: "Гречка 40г; Котлети з індички 60г; Овочі 200г.",
-        mealType: "Обід",
-        time: "15:30",
-        calories: 437,
-        isActive: false,
-      },
-      {
-        id: "4",
-        name: "Морква з хумусом",
-        ingredients: "Морква 100г; Хумус 40г.",
-        mealType: "Перекус",
-        time: "18:00",
-        calories: 135,
-        isActive: false,
-      },
-      {
-        id: "5",
-        name: "Овочеве рагу з квасолею та яйцем",
-        ingredients: "Овочі 250г; Квасоля 100г; Варене яйце 1шт.",
-        mealType: "Вечеря",
-        time: "20:30",
-        calories: 305,
-        isActive: false,
-      },
-    ],
-    totalCalories: 1542,
-  },
-  субота: {
-    dishes: [
-      {
-        id: "1",
-        name: "Сендвіч з шинкою",
-        ingredients: "Хліб 2шт; Шинка 75г; Сир твердий 20г; Огірок 80г; Листя салату 30г; Гірчиця 8г.",
-        mealType: "Сніданок",
-        time: "10:30",
-        calories: 320,
-        isActive: true,
-      },
-      {
-        id: "2",
-        name: "Банан і горішки",
-        ingredients: "Банан 100г; Суміш горіхів 10г.",
-        mealType: "Перекус",
-        time: "13:00",
-        calories: 150,
-        isActive: false,
-      },
-      {
-        id: "3",
-        name: "Рис з курячим філе на грилі та броколі",
-        ingredients: "Рис 60г; Курка 200г; Броколі 100г.",
-        mealType: "Обід",
-        time: "15:30",
-        calories: 465,
-        isActive: false,
-      },
-      {
-        id: "4",
-        name: "Протеїновий йогурт",
-        ingredients: "Йогурт 170г.",
-        mealType: "Перекус",
-        time: "18:00",
-        calories: 140,
-        isActive: false,
-      },
-      {
-        id: "5",
-        name: "Вершкове рагу",
-        ingredients: "Вершки 80г; Олія 5г; Вода 75г; Куряче філе 150г; Броколі 50г; Цвітна капуста 50г; Морква 50г; Болгарський перець 40г; Брюсельська капуста 40г.",
-        mealType: "Вечеря",
-        time: "20:30",
-        calories: 410,
-        isActive: false,
-      },
-    ],
-    totalCalories: 1485,
-  },
-  неділя: {
-    dishes: [
-      {
-        id: "1",
-        name: "Сирники з ягодами та джемом",
-        ingredients: "Сирники 150г; Ягоди 100г.",
-        mealType: "Сніданок",
-        time: "10:30",
-        calories: 363,
-        isActive: true,
-      },
-      {
-        id: "2",
-        name: "Протеїновий шейк",
-        ingredients: "Протеїн 30г; Молоко 250мл.",
-        mealType: "Перекус",
-        time: "13:00",
-        calories: 245,
-        isActive: false,
-      },
-      {
-        id: "3",
-        name: "Лаваш з куркою, сиром та овочами",
-        ingredients: "Лаваш 1шт; Курка 100г; Сир 30г; Овочі 150г.",
-        mealType: "Обід",
-        time: "15:30",
-        calories: 445,
-        isActive: false,
-      },
-      {
-        id: "4",
-        name: "Суміш горіхів з яблуком",
-        ingredients: "Горіхи 20г; Яблуко 150г.",
-        mealType: "Перекус",
-        time: "18:00",
-        calories: 200,
-        isActive: false,
-      },
-      {
-        id: "5",
-        name: "Зпечений баклажан з фаршем, сиром та моцарелою",
-        ingredients:
-          "Баклажан 200г; Фарш 100г; Овочі 100г; Сир 30г; Моцарела 40г.",
-        mealType: "Вечеря",
-        time: "20:30",
-        calories: 470,
-        isActive: false,
-      },
-    ],
-    totalCalories: 1723,
-  },
-};
+import { Dish, DayData, daysData } from "@/data/meals";
 
 const DayTab = ({
   day,
@@ -381,9 +24,8 @@ const DayTab = ({
   <button
     data-day={day}
     onClick={onClick}
-    className={`flex items-center gap-2 transition-colors duration-200 ${
-      isActive ? "text-meal-primary" : "text-meal-secondary"
-    } hover:text-meal-primary`}
+    className={`flex items-center gap-2 transition-colors duration-200 ${isActive ? "text-meal-primary" : "text-meal-secondary"
+      } hover:text-meal-primary`}
   >
     <span className="font-nunito text-2xl font-black uppercase leading-none">
       {day}
@@ -398,16 +40,22 @@ const DishCard = ({
   dish,
   isExpanded,
   onClick,
+  onSwapClick,
+  onRandomizeClick,
+  onInfoClick,
   mealState,
 }: {
   dish: Dish;
   isExpanded: boolean;
   onClick: () => void;
+  onSwapClick: () => void;
+  onRandomizeClick: () => void;
+  onInfoClick: () => void;
   mealState: MealState;
 }) => {
   const getCardStyles = () => {
     const baseClasses =
-      "flex flex-col p-4 sm:p-6 rounded-2xl gap-4 sm:gap-16 w-full text-left transition-all duration-200 hover:opacity-90";
+      "flex flex-col p-4 sm:p-6 rounded-3xl gap-1 w-full text-left transition-all duration-200 hover:opacity-90";
 
     console.log(`Meal: ${dish.name}, State: ${mealState}, Time: ${dish.time}`);
 
@@ -474,29 +122,50 @@ const DishCard = ({
         mealState === "current" ? { backgroundColor: "#F2F2F7" } : undefined
       }
     >
-      <div className="flex flex-col gap-1">
+      {(mealState === "current" || isExpanded) && (
+        <div className="flex items-start justify-between w-full">
+          <span className="font-nunito text-base text-meal-secondary uppercase font-extrabold">
+            {dish.mealType}
+          </span>
+          <span className="font-nunito text-base font-extrabold text-meal-accent uppercase">
+            {dish.time}
+          </span>
+        </div>
+      )}
+
+      <div className="flex flex-col gap-1 w-full">
         <h3 className={getNameStyles()}>{dish.name}</h3>
-        <p className={getIngredientsStyles()}>{dish.ingredients}</p>
       </div>
 
-      {isExpanded && dish.mealType && dish.time && dish.calories && (
-        <div className="flex items-start gap-4 w-full">
-          <div className="flex flex-col w-full">
-            <span className="font-nunito text-base text-meal-secondary uppercase font-extrabold">
-              {dish.mealType}
-            </span>
-            <span className="font-nunito text-base font-extrabold text-meal-accent uppercase">
-              {dish.time}
-            </span>
-          </div>
-          <div className="flex flex-col ml-auto w-full">
-            <span className="font-nunito text-base text-meal-secondary text-right uppercase font-extrabold">
-              калорії
-            </span>
-            <span className="font-nunito text-base font-extrabold text-meal-accent text-right uppercase">
-              {dish.calories}
-            </span>
-          </div>
+      {isExpanded && (
+        <div className="flex items-center justify-between w-full gap-4 mt-6">
+          <button
+            onClick={(e) => {
+              e.stopPropagation();
+              onSwapClick(); // Trigger swap action passed from parent
+            }}
+            className="flex items-center justify-center w-full h-12 bg-white rounded-[20px] hover:bg-gray-50 transition-colors border border-[#EBEBEB]"
+          >
+            <Repeat className="w-5 h-5 text-black" />
+          </button>
+          <button
+            onClick={(e) => {
+              e.stopPropagation();
+              onRandomizeClick();
+            }}
+            className="flex items-center justify-center w-full h-12 bg-white rounded-[20px] hover:bg-gray-50 transition-colors border border-[#EBEBEB]"
+          >
+            <Dices className="w-5 h-5 text-black" />
+          </button>
+          <button
+            onClick={(e) => {
+              e.stopPropagation();
+              onInfoClick();
+            }}
+            className="flex items-center justify-center w-full h-12 bg-white rounded-[20px] hover:bg-gray-50 transition-colors border border-[#EBEBEB]"
+          >
+            <Info className="w-5 h-5 text-black" />
+          </button>
         </div>
       )}
     </button>
@@ -622,16 +291,56 @@ const findCurrentMealByTime = (dishes: Dish[]): string | null => {
   return currentMeal.id;
 };
 
+// Function to get unique meals by type from all days
+const getUniqueMealsByType = (
+  mealType: string,
+  allDaysData: Record<string, DayData>,
+): Dish[] => {
+  const allDishes: Dish[] = [];
+  const seenIds = new Set<string>();
+
+  Object.values(allDaysData).forEach((dayData) => {
+    dayData.dishes.forEach((dish) => {
+      if (
+        dish.mealType === mealType &&
+        !seenIds.has(dish.name) // Using name as unique identifier since IDs might be reused per day
+      ) {
+        seenIds.add(dish.name);
+        allDishes.push(dish);
+      }
+    });
+  });
+
+  return allDishes;
+};
+
+
+
 export default function Index() {
   const [activeDay, setActiveDay] = useState(getCurrentDayInUkrainian());
-  const [expandedDishId, setExpandedDishId] = useState<string | null>(null);
+  const [daysDataState, setDaysDataState] = useState(() => {
+    const saved = localStorage.getItem("MEAL_PLAN_DATA");
+    if (saved) {
+      try {
+        return JSON.parse(saved);
+      } catch (e) {
+        console.error("Failed to parse saved meal plan", e);
+      }
+    }
+    return daysData;
+  });
+  const [expandedDishIds, setExpandedDishIds] = useState<string[]>([]);
   const [currentTimeMinutes, setCurrentTimeMinutes] = useState(
     getCurrentTimeInMinutes(),
   );
+  const [swapDish, setSwapDish] = useState<Dish | null>(null);
+  const [infoDish, setInfoDish] = useState<Dish | null>(null);
+  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+  const [isInfoDrawerOpen, setIsInfoDrawerOpen] = useState(false);
   const dayTabsRef = useRef<HTMLDivElement>(null);
 
   // Add error handling to prevent crashes
-  const currentDayData = daysData[activeDay] || {
+  const currentDayData = daysDataState[activeDay] || {
     dishes: [],
     totalCalories: 0,
   };
@@ -639,8 +348,15 @@ export default function Index() {
   // Set initial expanded dish when component mounts or day changes, based on current time
   useEffect(() => {
     const appropriateMealId = findCurrentMealByTime(currentDayData.dishes);
-    setExpandedDishId(appropriateMealId);
+    if (appropriateMealId && !expandedDishIds.includes(appropriateMealId)) {
+      setExpandedDishIds([appropriateMealId]);
+    }
   }, [activeDay, currentDayData.dishes]);
+
+  // Save to local storage whenever data changes
+  useEffect(() => {
+    localStorage.setItem("MEAL_PLAN_DATA", JSON.stringify(daysDataState));
+  }, [daysDataState]);
 
   // Scroll selected day into view when activeDay changes
   useEffect(() => {
@@ -668,7 +384,9 @@ export default function Index() {
       const currentDay = getCurrentDayInUkrainian();
       if (activeDay === currentDay) {
         const appropriateMealId = findCurrentMealByTime(currentDayData.dishes);
-        setExpandedDishId(appropriateMealId);
+        if (appropriateMealId && !expandedDishIds.includes(appropriateMealId)) {
+          setExpandedDishIds([...expandedDishIds, appropriateMealId]);
+        }
       }
     }, 60000); // Check every minute
 
@@ -684,6 +402,38 @@ export default function Index() {
     "субота",
     "неділя",
   ];
+
+  // Embla Carousel setup
+  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true });
+
+  // Sync active day with carousel slide
+  useEffect(() => {
+    if (emblaApi) {
+      const onSelect = () => {
+        const index = emblaApi.selectedScrollSnap();
+        setActiveDay(days[index]);
+      };
+      emblaApi.on("select", onSelect);
+      // Initial sync
+      const currentIndex = days.indexOf(activeDay);
+      if (emblaApi.selectedScrollSnap() !== currentIndex) {
+        emblaApi.scrollTo(currentIndex);
+      }
+      return () => {
+        emblaApi.off("select", onSelect);
+      };
+    }
+  }, [emblaApi, days]); // Removed activeDay from dependency to avoid loop
+
+  // Sync carousel with active day (when tab clicked)
+  useEffect(() => {
+    if (emblaApi) {
+      const currentIndex = days.indexOf(activeDay);
+      if (emblaApi.selectedScrollSnap() !== currentIndex) {
+        emblaApi.scrollTo(currentIndex);
+      }
+    }
+  }, [activeDay, emblaApi, days]);
 
   return (
     <div className="min-h-screen bg-meal-background">
@@ -709,49 +459,279 @@ export default function Index() {
               </div>
             </div>
 
-            {/* Dishes Container */}
-            <div className="flex flex-col gap-6">
-              <div className="flex flex-col gap-4">
-                {currentDayData.dishes.map((dish) => {
-                  const mealState = getMealState(
-                    dish,
-                    currentTimeMinutes,
-                    currentDayData.dishes,
-                  );
+            {/* Carousel Container */}
+            <div className="overflow-hidden" ref={emblaRef}>
+              <div className="flex">
+                {days.map((day) => {
+                  const dayData = daysDataState[day] || { dishes: [], totalCalories: 0 };
                   return (
-                    <DishCard
-                      key={dish.id}
-                      dish={dish}
-                      isExpanded={expandedDishId === dish.id}
-                      mealState={mealState}
-                      onClick={() => {
-                        // Toggle expanded state - collapse if already expanded, expand if collapsed
-                        setExpandedDishId(
-                          expandedDishId === dish.id ? null : dish.id,
-                        );
-                      }}
-                    />
+                    <div key={day} className="flex-[0_0_100%] min-w-0 px-2">
+                      <div className="flex flex-col gap-6">
+                        <div className="flex flex-col gap-4">
+                          {dayData.dishes.map((dish) => {
+                            const mealState = getMealState(
+                              dish,
+                              currentTimeMinutes,
+                              dayData.dishes,
+                            );
+                            return (
+                              <DishCard
+                                key={dish.id}
+                                dish={dish}
+                                isExpanded={expandedDishIds.includes(dish.id)}
+                                mealState={mealState}
+                                onClick={() => {
+                                  const currentMealId = findCurrentMealByTime(dayData.dishes);
+
+                                  if (expandedDishIds.includes(dish.id)) {
+                                    // Don't collapse if it's the current meal
+                                    if (dish.id !== currentMealId) {
+                                      setExpandedDishIds(expandedDishIds.filter(id => id !== dish.id));
+                                    }
+                                  } else {
+                                    // When expanding a new card, keep only current meal + this new card
+                                    const newExpanded = currentMealId
+                                      ? [currentMealId, dish.id]
+                                      : [dish.id];
+                                    setExpandedDishIds(newExpanded);
+                                  }
+                                }}
+                                onSwapClick={() => {
+                                  setSwapDish(dish);
+                                  setIsDrawerOpen(true);
+                                }}
+                                onRandomizeClick={() => {
+                                  const candidates = getUniqueMealsByType(dish.mealType || "", daysDataState)
+                                    .filter(d => d.name !== dish.name);
+
+                                  if (candidates.length > 0) {
+                                    const randomDish = candidates[Math.floor(Math.random() * candidates.length)];
+
+                                    setDaysDataState((prev) => {
+                                      const newDaysData = { ...prev };
+                                      const dayDishes = [...newDaysData[day].dishes]; // Use 'day' from map
+                                      const dishIndex = dayDishes.findIndex(d => d.id === dish.id);
+
+                                      if (dishIndex !== -1) {
+                                        dayDishes[dishIndex] = {
+                                          ...dayDishes[dishIndex],
+                                          name: randomDish.name,
+                                          ingredients: randomDish.ingredients,
+                                          calories: randomDish.calories,
+                                        };
+
+                                        newDaysData[day] = {
+                                          ...newDaysData[day],
+                                          dishes: dayDishes,
+                                          totalCalories: dayDishes.reduce((sum, d) => sum + (d.calories || 0), 0)
+                                        };
+                                      }
+                                      return newDaysData;
+                                    });
+                                  }
+                                }}
+                                onInfoClick={() => {
+                                  setInfoDish(dish);
+                                  setIsInfoDrawerOpen(true);
+                                }}
+                              />
+                            );
+                          })}
+
+                          {dayData.dishes.length === 0 && (
+                            <div className="flex items-center justify-center p-12 text-meal-secondary">
+                              <span className="font-nunito text-lg">
+                                Немає страв на цей день
+                              </span>
+                            </div>
+                          )}
+                        </div>
+
+                        {dayData.totalCalories > 0 && (
+                          <TotalCaloriesCard
+                            totalCalories={dayData.totalCalories}
+                          />
+                        )}
+                      </div>
+                    </div>
                   );
                 })}
-
-                {currentDayData.dishes.length === 0 && (
-                  <div className="flex items-center justify-center p-12 text-meal-secondary">
-                    <span className="font-nunito text-lg">
-                      Немає страв на цей день
-                    </span>
-                  </div>
-                )}
               </div>
-
-              {currentDayData.totalCalories > 0 && (
-                <TotalCaloriesCard
-                  totalCalories={currentDayData.totalCalories}
-                />
-              )}
             </div>
           </div>
         </div>
       </div>
-    </div>
+
+      <Drawer open={isDrawerOpen} onOpenChange={setIsDrawerOpen}>
+        <DrawerContent className="h-[85vh] rounded-t-[20px]" showHandle={false}>
+          <DrawerHeader className="flex items-center justify-between px-6 py-4 border-b border-gray-100">
+            <DrawerTitle className="font-nunito text-xl font-extrabold text-meal-secondary uppercase">
+              {swapDish?.mealType || "Страви"}
+            </DrawerTitle>
+            <DrawerClose asChild>
+              <button className="flex items-center justify-center w-8 h-8 rounded-full bg-gray-100 hover:bg-gray-200 transition-colors">
+                <X className="w-4 h-4 text-black" />
+              </button>
+            </DrawerClose>
+          </DrawerHeader>
+          <div className="flex-1 overflow-y-auto p-4 sm:p-6">
+            <div className="flex flex-col gap-4">
+              {swapDish &&
+                getUniqueMealsByType(swapDish.mealType || "", daysDataState)
+                  .sort((a, b) => {
+                    // Put parent meal at the top
+                    if (a.name === swapDish.name) return -1;
+                    if (b.name === swapDish.name) return 1;
+                    return 0;
+                  })
+                  .map(
+                    (dish, index) => (
+                      <button
+                        key={`${dish.name}-${index}`}
+                        className={`flex flex-col p-4 rounded-2xl border text-left transition-all active:scale-[0.99] ${dish.name === swapDish.name
+                          ? 'border-transparent bg-[#f2f2f7]'
+                          : 'border-gray-100 bg-white hover:border-meal-accent/50 active:bg-gray-50'
+                          }`}
+                        onClick={() => {
+                          if (swapDish) {
+                            setDaysDataState((prev) => {
+                              const newDaysData = { ...prev };
+                              const dayDishes = [...newDaysData[activeDay].dishes];
+
+                              // Find index of the dish being swapped
+                              const swapIndex = dayDishes.findIndex(d => d.id === swapDish.id);
+
+                              if (swapIndex !== -1) {
+                                // Create new dish with properties from selected dish but keep time/type from original slot
+                                dayDishes[swapIndex] = {
+                                  ...dayDishes[swapIndex],
+                                  name: dish.name,
+                                  ingredients: dish.ingredients,
+                                  calories: dish.calories,
+                                  // Keep original ID, time, mealType, isActive
+                                };
+
+                                // Recalculate total calories
+                                newDaysData[activeDay] = {
+                                  ...newDaysData[activeDay],
+                                  dishes: dayDishes,
+                                  totalCalories: dayDishes.reduce((sum, d) => sum + (d.calories || 0), 0)
+                                };
+                              }
+
+                              return newDaysData;
+                            });
+
+                            setIsDrawerOpen(false);
+                            setSwapDish(null);
+                          }
+                        }}
+                      >
+                        <div className="flex items-start justify-between w-full mb-1">
+                          <span className="font-nunito text-base font-extrabold text-meal-secondary uppercase">
+                            калорії
+                          </span>
+                          <span className="font-nunito text-base font-extrabold text-meal-accent">
+                            {dish.calories}
+                          </span>
+                        </div>
+                        <h3 className="font-nunito text-lg font-extrabold text-black uppercase leading-tight mb-1">
+                          {dish.name}
+                        </h3>
+                      </button>
+                    ),
+                  )}
+            </div>
+          </div>
+        </DrawerContent>
+      </Drawer>
+
+      <Drawer open={isInfoDrawerOpen} onOpenChange={setIsInfoDrawerOpen}>
+        <DrawerContent className="h-[90vh] rounded-t-[20px]" showHandle={false}>
+          <DrawerHeader className="flex items-center justify-between px-6 py-4 border-b border-gray-100">
+            <DrawerTitle className="font-nunito text-xl font-extrabold text-meal-secondary uppercase">
+              ДЕТАЛІ
+            </DrawerTitle>
+            <DrawerClose asChild>
+              <button className="flex items-center justify-center w-8 h-8 rounded-full bg-gray-100 hover:bg-gray-200 transition-colors">
+                <X className="w-4 h-4 text-black" />
+              </button>
+            </DrawerClose>
+          </DrawerHeader>
+          <div className="flex-1 overflow-y-auto p-6">
+            {infoDish && (
+              <div className="flex flex-col gap-8">
+                <h2 className="font-nunito text-2xl font-black uppercase leading-tight">
+                  {infoDish.name}
+                </h2>
+
+                <div className="flex items-center justify-between">
+                  <div className="flex flex-col">
+                    <span className="font-nunito text-base font-extrabold text-meal-secondary uppercase">
+                      {infoDish.mealType}
+                    </span>
+                    <span className="font-nunito text-base font-extrabold text-meal-accent">
+                      {infoDish.time}
+                    </span>
+                  </div>
+                  <div className="flex flex-col items-center">
+                    <span className="font-nunito text-base font-extrabold text-meal-secondary uppercase">
+                      Б/Ж/В
+                    </span>
+                    <span className="font-nunito text-base font-extrabold text-meal-accent">
+                      {infoDish.macros ? `${infoDish.macros.protein}/${infoDish.macros.fat}/${infoDish.macros.carbs}` : "000/000/000"}
+                    </span>
+                  </div>
+                  <div className="flex flex-col items-end">
+                    <span className="font-nunito text-base font-extrabold text-meal-secondary uppercase">
+                      калорії
+                    </span>
+                    <span className="font-nunito text-base font-extrabold text-meal-accent">
+                      {infoDish.calories}
+                    </span>
+                  </div>
+                </div>
+
+                <div className="flex flex-col gap-4">
+                  <h3 className="font-nunito text-lg font-extrabold text-meal-secondary uppercase">
+                    ІНГРЕДІЄНТИ
+                  </h3>
+                  <div className="flex flex-col gap-2">
+                    {infoDish.ingredients.split(";").map((ingredient, index) => {
+                      const trimmed = ingredient.trim();
+                      if (!trimmed) return null;
+                      return (
+                        <span key={index} className="font-nunito text-base font-bold uppercase">
+                          {trimmed.endsWith(".") ? trimmed : `${trimmed};`}
+                        </span>
+                      );
+                    })}
+                  </div>
+                </div>
+
+                <div className="flex flex-col gap-4">
+                  <h3 className="font-nunito text-lg font-extrabold text-meal-secondary uppercase">
+                    РЕЦЕПТ
+                  </h3>
+                  <div className="flex flex-col gap-4">
+                    {infoDish.recipe ? (
+                      infoDish.recipe.map((step, index) => (
+                        <p key={index} className="font-nunito text-base font-bold leading-relaxed">
+                          {step}
+                        </p>
+                      ))
+                    ) : (
+                      <p className="font-nunito text-base font-bold leading-relaxed text-meal-secondary">
+                        Рецепт ще не додано.
+                      </p>
+                    )}
+                  </div>
+                </div>
+              </div>
+            )}
+          </div>
+        </DrawerContent>
+      </Drawer>
+    </div >
   );
 }
