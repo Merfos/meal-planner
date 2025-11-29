@@ -468,9 +468,9 @@ export default function Index() {
 
   return (
     <div className="h-screen bg-meal-background flex flex-col">
-      <div className="flex justify-center px-4 sm:px-6 lg:px-8">
-        <div className="w-full max-w-5xl">
-          <div className="flex flex-col h-screen">
+      <div className="flex justify-center px-4 sm:px-6 lg:px-8 h-full overflow-hidden">
+        <div className="w-full max-w-5xl h-full">
+          <div className="flex flex-col h-full">
             {/* Day Tabs */}
             <div className="sticky top-0 z-10 bg-white pb-4 mb-4">
               <div className="flex items-center gap-3 sm:gap-4 md:gap-6 lg:gap-8 overflow-x-auto scrollbar-hide justify-start pt-6 sm:pt-8">
@@ -491,13 +491,13 @@ export default function Index() {
             </div>
 
             {/* Carousel Container */}
-            <div className="overflow-hidden flex-1" ref={emblaRef}>
-              <div className="flex">
+            <div className="overflow-hidden flex-1 min-h-0" ref={emblaRef}>
+              <div className="flex h-full">
                 {days.map((day) => {
                   const dayData = daysDataState[day] || { dishes: [], totalCalories: 0 };
                   return (
                     <div key={day} className="flex-[0_0_100%] min-w-0 px-2">
-                      <div className="flex flex-col gap-6 overflow-y-auto h-full pb-6">
+                      <div className="flex flex-col gap-6 overflow-y-auto h-full pb-6 scrollbar-hide">
                         <div className="flex flex-col gap-4">
                           {dayData.dishes.map((dish) => {
                             const mealState = getMealState(
