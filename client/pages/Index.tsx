@@ -666,11 +666,13 @@ export default function Index() {
                             {dish.calories}
                           </span>
                         </div>
-                        <h3 className="font-nunito text-lg font-extrabold text-black uppercase leading-tight mb-1">
-                          {dish.name}
-                        </h3>
+                        <div className="flex flex-col gap-1">
+                          <h3 className="font-nunito text-lg font-extrabold text-black uppercase leading-tight mb-1">
+                            {dish.name}
+                          </h3>
+                        </div>
                       </button>
-                    ),
+                    )
                   )}
             </div>
           </div>
@@ -681,7 +683,7 @@ export default function Index() {
         <DrawerContent className="h-[90vh] rounded-t-[20px]" showHandle={false}>
           <DrawerHeader className="flex items-center justify-between px-6 py-4 border-b border-gray-100">
             <DrawerTitle className="font-nunito text-xl font-extrabold text-meal-secondary uppercase">
-              ДЕТАЛІ
+              Інформація
             </DrawerTitle>
             <DrawerClose asChild>
               <button className="flex items-center justify-center w-8 h-8 rounded-full bg-gray-100 hover:bg-gray-200 transition-colors">
@@ -689,8 +691,8 @@ export default function Index() {
               </button>
             </DrawerClose>
           </DrawerHeader>
-          <div className="flex-1 overflow-y-auto p-6">
-            {infoDish && (
+          {infoDish && (
+            <div className="flex-1 overflow-y-auto p-6">
               <div className="flex flex-col gap-6">
                 <h2 className="font-nunito text-2xl font-black uppercase leading-tight">
                   {infoDish.name}
@@ -700,14 +702,6 @@ export default function Index() {
                   <div className="flex flex-col">
                     <span className="font-nunito text-base font-extrabold text-meal-secondary uppercase">
                       {infoDish.mealType}
-                    </span>
-                    <span className="font-nunito text-base font-extrabold text-meal-accent">
-                      {infoDish.time}
-                    </span>
-                  </div>
-                  <div className="flex flex-col items-center">
-                    <span className="font-nunito text-base font-extrabold text-meal-secondary uppercase">
-                      Б/Ж/В
                     </span>
                     <span className="font-nunito text-base font-extrabold text-meal-accent">
                       {infoDish.macros ? `${infoDish.macros.protein}/${infoDish.macros.fat}/${infoDish.macros.carbs}` : "000/000/000"}
@@ -745,7 +739,7 @@ export default function Index() {
                     РЕЦЕПТ
                   </h3>
                   <div className="flex flex-col gap-4">
-                    {infoDish.recipe ? (
+                    {infoDish.recipe && infoDish.recipe.length > 0 ? (
                       infoDish.recipe.map((step, index) => (
                         <p key={index} className="font-nunito text-base font-bold leading-relaxed">
                           {step}
@@ -759,8 +753,8 @@ export default function Index() {
                   </div>
                 </div>
               </div>
-            )}
-          </div>
+            </div>
+          )}
         </DrawerContent>
       </Drawer>
     </div >
