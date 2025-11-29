@@ -12,6 +12,7 @@ export interface Dish {
         fat: number;
         carbs: number;
     };
+    isRandomized?: boolean;
 }
 
 export interface DayData {

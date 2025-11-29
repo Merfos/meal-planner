@@ -386,7 +386,28 @@ export default function Index() {
 
   // Save to local storage whenever data changes
   useEffect(() => {
-    localStorage.setItem("MEAL_PLAN_DATA", JSON.stringify(daysDataState));
+    const dataToSave = JSON.parse(JSON.stringify(daysDataState));
+    Object.keys(dataToSave).forEach((day) => {
+      if (dataToSave[day] && dataToSave[day].dishes) {
+        dataToSave[day].dishes = dataToSave[day].dishes.map((dish: Dish) => {
+          if (dish.isRandomized) {
+            // Revert to original from static data
+            const originalDayData = daysData[day];
+            if (originalDayData) {
+              const originalDish = originalDayData.dishes.find((d) => d.id === dish.id);
+              if (originalDish) return originalDish;
+            }
+          }
+          return dish;
+        });
+        // Recalculate total calories for the saved state
+        dataToSave[day].totalCalories = dataToSave[day].dishes.reduce(
+          (sum: number, d: Dish) => sum + (d.calories || 0),
+          0
+        );
+      }
+    });
+    localStorage.setItem("MEAL_PLAN_DATA", JSON.stringify(dataToSave));
   }, [daysDataState]);
 
   // Scroll selected day into view when activeDay changes
@@ -549,6 +570,7 @@ export default function Index() {
                                           name: randomDish.name,
                                           ingredients: randomDish.ingredients,
                                           calories: randomDish.calories,
+                                          isRandomized: true,
                                         };
 
                                         newDaysData[day] = {
@@ -639,6 +661,7 @@ export default function Index() {
                                   name: dish.name,
                                   ingredients: dish.ingredients,
                                   calories: dish.calories,
+                                  isRandomized: false,
                                   // Keep original ID, time, mealType, isActive
                                 };
 
